@@ -21,7 +21,7 @@ Include step-by-step instructions on how to install and set up your project loca
 
 ### Prerequisites
 
-Before you begin, ensure you have the following prerequisites installed:
+Before you begin , ensure you have the following prerequisites installed:
 
 #### For Spring Boot (Backend)
 
