@@ -42,7 +42,7 @@ Before you begin, ensure you have the following prerequisites installed:
 
 ### Installation Steps
 
-Provide instructions for setting up the project locally.
+Provide instructions for setting up the project locally .
 
 1. Clone the repository.
 2. Navigate to the `client` directory.
