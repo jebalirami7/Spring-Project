@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class QuizzController {
 
     @Autowired
-    private QuizzService service ;
+    private QuizzService service;
 
     @GetMapping("/{id}")
     public Quizz getQuizzById(@RequestParam(value = "id") String id) {
@@ -21,17 +21,17 @@ public class QuizzController {
     }
 
     @PostMapping("/")
-    public Quizz createQuizz(@RequestBody()  Quizz q ) {
+    public Quizz createQuizz(@RequestBody() Quizz q) {
         return service.addQuizz(q);
     }
 
     @PatchMapping("/{id}")
-    public Quizz updateQuizz(@RequestParam(value = "id")String id) {
+    public Quizz updateQuizz(@RequestParam(value = "id") String id) {
         return service.findById(id);
     }
 
     @DeleteMapping("/{id}")
-    public Quizz deleteQuizz(@RequestParam(value = "id")String id) {
+    public Quizz deleteQuizz(@RequestParam(value = "id") String id) {
         return service.findById(id);
     }
 }
