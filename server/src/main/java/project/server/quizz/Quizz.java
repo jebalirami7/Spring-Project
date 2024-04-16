@@ -1,7 +1,5 @@
 package project.server.quizz;
 
-
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,10 +12,8 @@ public class Quizz {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id ;
-
-    private String question ; 
+    private String id;
+    private String question;
     private String[] reponses;
-
 
 }
