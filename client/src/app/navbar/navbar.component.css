@@ -1,0 +1,86 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+/*** Navbar ***/
+.navbar .dropdown-toggle::after {
+   
+    font-family: "Montserrat";
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+.text-primary {
+    color: #06BBCC !important;
+}
+
+.navbar .navbar-nav .nav-link {
+    margin-right: 35px;
+    padding: 25px 0;
+    color: #FFFFFF;
+    font-size: 16px;
+    text-transform: uppercase;
+    outline: none;
+}
+
+.navbar-light .navbar-nav .nav-link:hover
+ {
+    color:#06BBCC ;
+}
+
+.navbar-light .navbar-brand,
+.navbar-light a.btn {
+    height: 75px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #181d38;
+    font-weight: 500;
+}
+
+.navbar-light.sticky-top {
+    top: -100px;
+    transition: .5s;
+}
+
+@media (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        margin-top: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s;
+    }
+
+    .navbar .dropdown-menu.fade-down {
+        top: 100%;
+        transform: rotateX(-75deg);
+        transform-origin: 0% 0%;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        top: 100%;
+        transform: rotateX(0deg);
+        visibility: visible;
+        transition: .5s;
+        opacity: 1;
+    }
+}
+.dropdown-item{
+    background-color: #FFFFFF;
+    color: #181d38;;
+}
+.dropdown-item:hover{
+    background-color: rgb(231, 229, 229);
+}
+.btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    transition: .5s;
+}
+
+.btn.btn-primary,
+.btn.btn-secondary {
+    border: none;
+    border-radius: 0%;
+    color: #FFFFFF;
+    background-color: #06BBCC;
+}

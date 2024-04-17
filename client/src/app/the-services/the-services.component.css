@@ -1,0 +1,26 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+.service-item {
+    background: #F0FBFC;
+    transition: .5s;
+}
+
+.service-item:hover {
+    margin-top: -10px;
+    background: #06BBCC;
+    color: #F0FBFC !important;
+}
+.service-item:hover .fa{
+    color: #F0FBFC;
+    transition: 0.5s;
+}
+.service-item  {
+    transition: .5s;
+}
+
+.fa {
+    color: #06BBCC ;
+}
+.container-xxl{
+    position: relative;
+    bottom: 50px;
+}
