@@ -1,4 +1,4 @@
-package project.server.review;
+package project.server.Entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,12 +12,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Review {
+public class Quizz {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String comment;
-    private double rating;
+    private String question;
+    private String[] reponses;
 
 }
