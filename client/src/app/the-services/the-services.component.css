@@ -11,10 +11,10 @@
 }
 .service-item:hover .fa{
     color: #F0FBFC;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 .service-item  {
-    transition: .5s;
+    transition: 0.3s;
 }
 
 .fa {
@@ -24,3 +24,40 @@
     position: relative;
     bottom: 50px;
 }
+.img-fluid{
+    position: relative;
+    bottom: -100px;
+}
+.btn{
+    background-color: #F14D5D;
+    border-color: #F14D5D;
+    
+}
+.kk{
+    text-align: center;
+}
+.btn:hover {
+    color: #fff;
+    background-color: #ee2a3d;
+    border-color: #ed1e32;
+  }
+  .section-title{
+    color: #06BBCC;
+  }
+  .mimi{
+    position: relative;
+    top: 35px;
+  }
+  .item1{
+    background-color: #06BBCC;
+  }
+  .item2{
+    background-color: #f0efef;
+    
+  }
+  .item3{
+    background-color: #06BBCC;
+  }
+  .item4{
+    background-color: #f0efef;
+  }
