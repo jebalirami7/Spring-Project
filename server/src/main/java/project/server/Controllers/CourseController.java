@@ -1,4 +1,4 @@
-package project.server.course;
+package project.server.Controllers;
 
 import java.util.List;
 
@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import project.server.Entities.Course;
+import project.server.Services.CourseService;
 
 @RestController
 @RequestMapping(path = "/course")
@@ -30,8 +32,8 @@ public class CourseController {
         return service.getCourse(id);
     }
 
-    @PostMapping    
-    public Course addCourse(@RequestBody Course course) {
+    @PostMapping
+    public Course createCourse(@RequestBody Course course) {
         System.out.println(course);
         return service.addCourse(course);
     }

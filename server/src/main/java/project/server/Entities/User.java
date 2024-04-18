@@ -1,10 +1,8 @@
-package project.server.user;
+package project.server.Entities;
 
 import java.time.LocalDate;
 import java.time.Period;
-
 import jakarta.persistence.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -25,5 +24,6 @@ public class User {
 
     public int getAge() {
         return Period.between(this.dob, LocalDate.now()).getYears();
-    }   
+    }
+
 }
