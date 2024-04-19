@@ -12,32 +12,36 @@ import project.server.Repositories.CourseRepo;
 public class CourseService {
     
     @Autowired
-    private CourseRepo repo;
+    private CourseRepo courseRepo;
+    // @Autowired
+    // private UserService userService;
+
 
     public List<Course> getCourses() {
-        return repo.findAll();
+        return courseRepo.findAll();
     }
 
     public Course getCourse(int id) {
-        return repo.findById(id).orElse(null);
+        return courseRepo.findById(id).orElse(null);
     }
 
     public Course addCourse(Course course) {
-        return repo.save(course);
+        // course.setCreator(userService.getUser(course.getCreator().getId()));
+        return courseRepo.save(course);
     }
 
     public Course updateCourse(Course course) {
-        boolean exists = repo.existsById(course.getId());
+        boolean exists = courseRepo.existsById(course.getId());
         if (!exists) 
             throw new IllegalStateException("Course with id " + course.getId() + " does not exist");
-        return repo.save(course);
+        return courseRepo.save(course);
     }
 
     public String deleteCourse(int id) {
-        boolean exists = repo.existsById(id);
+        boolean exists = courseRepo.existsById(id);
         if (!exists) 
             throw new IllegalStateException("Course with id " + id + " does not exist");
-        repo.deleteById(id);
+        courseRepo.deleteById(id);
         return "Course with id " + id + " was successfully deleted";
     }
 

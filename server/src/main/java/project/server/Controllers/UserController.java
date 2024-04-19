@@ -22,24 +22,24 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-	@GetMapping
-	public List<User> getUsers() {
-		return userService.getUsers();
-	}
+	// @GetMapping
+	// public List<User> getUsers() {
+	// 	return userService.getUsers();
+	// }
 
-    @GetMapping(path = "{id}")
-    public User getUser(@PathVariable("id") int id) {
-        return userService.getUser(id);
-    }
+    // @GetMapping(path = "{id}")
+    // public User getUser(@PathVariable("id") int id) {
+    //     return userService.getUser(id);
+    // }
 
-    @PostMapping    
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
-    }
+    // @PostMapping    
+    // public User createUser(@RequestBody User user) {
+    //     return userService.createUser(user);
+    // }
 
-    @DeleteMapping(path = "{id}")
-    public String deleteUser(@PathVariable("id") int id) {
-        return userService.deleteUser(id);
-    }
+    // @DeleteMapping(path = "{id}")
+    // public String deleteUser(@PathVariable("id") int id) {
+    //     return userService.deleteUser(id);
+    // }
 
 }
