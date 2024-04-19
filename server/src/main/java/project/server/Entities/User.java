@@ -2,12 +2,21 @@ package project.server.Entities;
 
 import java.time.LocalDate;
 import java.time.Period;
-import jakarta.persistence.*;
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,11 +28,25 @@ public class User {
     private String name;
     private String email;
     private LocalDate dob;
+    private String password;
+    private String role;
     @Transient
     private int age;
+
+    @OneToMany(mappedBy = "creator")
+    private List<Course> created_courses;
+    
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviewedCourses;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserCourse> userCourses;
+    
+    // @ManyToMany(mappedBy = "users")
+    // private List<Course> courses;
 
     public int getAge() {
         return Period.between(this.dob, LocalDate.now()).getYears();
     }
-
+    
 }
