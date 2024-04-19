@@ -1,0 +1,18 @@
+<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="text-center">
+            <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
+            <h1 class="mb-5">Our Students Say!</h1>
+        </div>
+        <div class="testimonial-carousel">
+            <div class="testimonial-item text-center" *ngFor="let testimonial of testimonials">
+                <img class="border rounded-circle p-2 mx-auto mb-3" [src]="testimonial.image" style="width: 80px; height: 80px;">
+                <h5 class="mb-0">{{ testimonial.name }}</h5>
+                <p>{{ testimonial.profession }}</p>
+                <div class="testimonial-text bg-light text-center p-4">
+                    <p class="mb-0">{{ testimonial.content }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

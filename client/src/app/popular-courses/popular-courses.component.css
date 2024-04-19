@@ -1,0 +1,24 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+.course-item img {
+    transition: .5s;
+}
+
+
+.course-item:hover img {
+    transform: scale(1.1);
+}
+.section-title{
+    color: #06BBCC;
+    font-size: 20px;
+}
+.fa{
+    color: #06BBCC;
+}
+.btn{
+    background-color: #141414;
+    border-color: #06BBCC;
+}
+.btn:hover{
+    background-color: #59e1af;
+    border-color: #59e1af;
+}
