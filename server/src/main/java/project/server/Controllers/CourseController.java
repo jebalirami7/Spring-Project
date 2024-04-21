@@ -1,51 +1,50 @@
 package project.server.Controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import project.server.Entities.Course;
 import project.server.Services.CourseService;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/course")
 public class CourseController {
 
     @Autowired
-    private CourseService service;
+    private CourseService courseService;
 
     @GetMapping
-    public List<Course> getCourses() {
-        return service.getCourses();
+    public ResponseEntity<List<Course>> getAllCourses() {
+        List<Course> courses = courseService.getAllCourses();
+        return ResponseEntity.ok(courses);
     }
 
-    @GetMapping(path = "/{id}")
-    public Course getCourse(int id) {
-        return service.getCourse(id);
+    @GetMapping("/{id}")
+    public ResponseEntity<Course> getCourseById(@PathVariable int id) {
+        Optional<Course> course = courseService.getCourseById(id);
+        return course.map(value -> ResponseEntity.ok().body(value))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
     public Course createCourse(@RequestBody Course course) {
-        System.out.println(course);
-        return service.addCourse(course);
+        Course createdCourse = courseService.createCourse(course);
+        return createdCourse;
     }
 
-    @PutMapping
-    public Course updateCourse(@RequestBody Course course) {
-        return service.updateCourse(course);
+    @PutMapping("/{id}")
+    public ResponseEntity<Course> updateCourse(@PathVariable int id, @RequestBody Course course) {
+        Course updatedCourse = courseService.updateCourse(id, course);
+        return ResponseEntity.ok().body(updatedCourse);
     }
 
-    @DeleteMapping(path = "/{id}")
-    public String deleteCourse(@PathVariable("id") int id) {
-        return service.deleteCourse(id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCourse(@PathVariable int id) {
+        courseService.deleteCourse(id);
+        return ResponseEntity.noContent().build();
     }
-    
 }
+
