@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,15 +24,18 @@ import lombok.NoArgsConstructor;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private String name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String firstName;
+    private String lastName;
+    @Column(nullable = false, unique = true)
     private String email;
-    private LocalDate dob;
+    @Column(nullable = false, unique = true)
+    private String username ;
+    @Column(nullable = false, unique = true)
     private String password;
     private String role;
-    @Transient
-    private int age;
+
 
     @OneToMany(mappedBy = "creator")
     private List<Course> created_courses;
@@ -45,8 +49,6 @@ public class User {
     // @ManyToMany(mappedBy = "users")
     // private List<Course> courses;
 
-    public int getAge() {
-        return Period.between(this.dob, LocalDate.now()).getYears();
-    }
+
     
 }
