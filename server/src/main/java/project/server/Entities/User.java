@@ -35,13 +35,6 @@ public class User {
 
     @OneToMany(mappedBy = "creator")
     private List<Course> created_courses;
-    
-    @OneToMany(mappedBy = "user")
-    private List<Review> reviewedCourses;
-
-    @OneToMany(mappedBy = "user")
-    private List<UserCourse> userCourses;
-    
     // @ManyToMany(mappedBy = "users")
     // private List<Course> courses;
 
