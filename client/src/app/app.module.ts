@@ -18,6 +18,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { InstructorsComponent } from './instructors/instructors.component';
 import { ProvidedServicesComponent } from './provided-services/provided-services.component';
 import { SearchComponent } from './search/search.component';
+import { AuthService } from './services/auth.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -42,10 +45,13 @@ import { SearchComponent } from './search/search.component';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    HttpClientModule,
   ],
-  providers: [
-
-  ],
+  providers: [AuthService, {
+    provide : HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

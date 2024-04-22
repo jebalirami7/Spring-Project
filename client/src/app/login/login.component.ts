@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
-// import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ export class LoginComponent {
   signupForm: FormGroup;
   signupError: string = ''; 
 
-  constructor(private router: Router, private fb: FormBuilder/*, private auth: AuthService*/) {
+  constructor(private router: Router, private fb: FormBuilder, private auth: AuthService) {
     this.loginForm = this.fb.group({
       username: [''],
       password: ['']
@@ -29,7 +29,8 @@ export class LoginComponent {
       lastName: [''],
       email: [''],
       username: [''],
-      password: ['']
+      password: [''],
+      role: ['ROLE_USER']
     });
   }
 
@@ -48,16 +49,16 @@ export class LoginComponent {
       const email = emailControl.value;
       this.signupError = '';
 
-      // this.auth.signup(this.signupForm.value).subscribe({
-      //   next: (result) => {
-      //     this.router.navigate(['/']);
-      //   },
-      //   error: (err) => {
-      //     this.signupError = "Erreur d'authentification";
-      //     console.log(this.signupError);
-      //   },
-      // });
-      console.log(username, password, firstName, lastName, email);
+      this.auth.signup(this.signupForm.value).subscribe({
+        next: (result) => {
+          this.router.navigate(['/']);
+        },
+        error: (err) => {
+          this.signupError = "Erreur d'authentification";
+          console.log(this.signupError);
+        },
+      });
+      // console.log(username, password, firstName, lastName, email);
       
     } else {
       this.signupError = 'Please enter valid credentials';
