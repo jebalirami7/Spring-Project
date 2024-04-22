@@ -49,7 +49,7 @@ export class TutorsComponent {
       position: 'Web Design & Development',
       image: '../../assets/images/man1.jpg',
       
-    },
+    }
     
   ];
 
