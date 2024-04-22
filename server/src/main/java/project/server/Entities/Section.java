@@ -25,8 +25,8 @@ public class Section implements Serializable{
     private int id;
     private String name;
     private int niveau;    
-    //@OneToMany(mappedBy = "section")
-    //private List<Student> students;
+    @OneToMany(mappedBy = "section")
+    private List<Student> students;
     @ManyToMany
     @JoinTable(
         name = "section_subject",
