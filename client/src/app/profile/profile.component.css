@@ -1,133 +1,130 @@
-
-@import '@fortawesome/fontawesome-free/css/all.css';
+@import "@fortawesome/fontawesome-free/css/all.css";
 .profile-container {
-    max-width: 1050px;
-    margin: 0 auto;
-    margin-top: 30px;
-    padding: 30px;
-  }
-  
-  .profile-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 40px;
-  }
-  
-  .profile-picture {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 20px;
-    position: relative;
-  }
-  
-  .profile-picture img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .fa-camera {
-    position: relative;
-    top: 100px;
-    right: 60px;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 4px;
-    border-radius: 50%;
-   font-size: 20px;
-   color: rgb(28, 27, 27);
-  }
-  
-  .upload-button i {
-    color: #06BBCC;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .profile-details {
-    flex: 1;
-  }
-  
-  .username {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
- 
-  .edit-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #06BBCC;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .edit-button:hover {
-    background-color: #3bd39b;
-  }
-  
-  .courses {
-    margin-top: 30px;
-  }
-  
-  .courses h3 {
-    font-size: 35px;
-    margin-bottom: 10px;
-    text-align: center;
-    
-    font-weight: 600;
-  }
-  
-  .course-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 60px;
-  }
-  
-  .course {
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    border: 1px solid #e1e4e3;
-  }
-  
-  .course:hover {
-    transform: translateY(-3px); 
-    box-shadow: 0 4px 8px rgba(31, 185, 193, 0.1); 
-    border: 1px solid #e4e6e6;
-  }
-  
-  .course-picture {
-    position: relative;
-    height: 200px;
-    overflow: hidden;
-  }
-  
-  .course-picture img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  
-  .course-details {
-    padding: 10px;
-  }
-  
-  .course-details h4 {
-    font-size: 20px;
-    margin-bottom: 5px;
-  }
-  
-  .tutor, .rate {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
+  max-width: 1050px;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 30px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+  position: relative;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fa-camera {
+  position: relative;
+  top: 100px;
+  right: 60px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 4px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: rgb(28, 27, 27);
+}
+
+.upload-button i {
+  color: #06bbcc;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.profile-details {
+  flex: 1;
+}
+
+.username {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.edit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #06bbcc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+  background-color: #3bd39b;
+}
+
+.courses {
+  margin-top: 30px;
+}
+
+.courses h3 {
+  font-size: 35px;
+  margin-bottom: 10px;
+  text-align: center;
+
+  font-weight: 600;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.course {
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  border: 1px solid #e1e4e3;
+}
+
+.course:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(31, 185, 193, 0.1);
+  border: 1px solid #e4e6e6;
+}
+
+.course-picture {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.course-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.course-details {
+  padding: 10px;
+}
+
+.course-details h4 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.tutor,
+.rate {
+  font-size: 16px;
+  margin-bottom: 5px;
+}

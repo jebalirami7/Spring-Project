@@ -1,10 +1,7 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-popular-courses',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './popular-courses.component.html',
   styleUrl: './popular-courses.component.css',
 })

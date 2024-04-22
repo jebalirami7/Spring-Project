@@ -1,13 +1,11 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 @Component({
-  selector: 'app-tutors',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './tutors.component.html',
-  styleUrl: './tutors.component.css',
+  selector: 'app-instructors',
+  templateUrl: './instructors.component.html',
+  styleUrl: './instructors.component.css'
 })
-export class TutorsComponent {
+export class InstructorsComponent {
   @ViewChild('instructorGalleryCont') instructorGalleryCont!: ElementRef;
 
   instructors = [

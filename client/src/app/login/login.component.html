@@ -2,35 +2,34 @@
 <div class="container" [ngClass]="{ 'active': isLoginFormActive }">
   
     <div class="form-container sign-up" *ngIf="!isLoginFormActive">
-      <div *ngIf="signupError" class="error-msg">
-        {{ signupError }}
-      </div>
-      <form [formGroup]="signupForm">
+      <form [formGroup]="signupForm" (ngSubmit)="signupSubmit()">
         <h1>Create Account</h1>
-        <div class="social-icons">
+        <!-- <div class="social-icons">
           <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
           <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-        </div>
-        <input formControlName="name" type="text" placeholder="Name">
-
-        <input type="date" id="birthdate" name="birthdate" value="" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="date of birth">
-        <input formControlName="email" type="email" placeholder="Email">
-        <input formControlName="password" type="password" placeholder="Password">
-        <button type="button" (click)="toggleForm()" >Sign Up</button>
+        </div> -->
+        <input required formControlName="firstName" type="text" placeholder="First Name">
+        <input required formControlName="lastName" type="text" placeholder="Last Name">
+        <input required type="date" id="birthdate" name="birthdate" value="" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Date Of Birth">
+        <input required formControlName="email" type="email" placeholder="Email">
+        <input required formControlName="username" type="username" placeholder="username">
+        <input required formControlName="password" type="password" placeholder="Password">
+        <div *ngIf="signupError" class="error-msg"> {{ signupError }}</div>
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   
     <div class="form-container sign-in" *ngIf="isLoginFormActive">
-      <form [formGroup]="loginForm">
+      <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
         <h1>Sign In</h1>
-        <div class="social-icons">
+        <!-- <div class="social-icons">
           <a href="/" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
           <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-        </div>
-        <input formControlName="email" type="email" placeholder="Email">
-        <input formControlName="password" type="password" placeholder="Password">
+        </div> -->
+        <input required formControlName="username" type="username" placeholder="username">
+        <input required formControlName="password" type="password" placeholder="Password">
         <a href="#">Forget Your Password?</a>
-        <button type="button" (click)="toggleForm()">Sign In</button>
+        <button type="submit">Sign In</button>
       </form>
     </div>
   
@@ -39,13 +38,13 @@
       <div class="toggle">
         <div class="toggle-panel toggle-left">
           <h1>Welcome Back!</h1>
-          <p>Enter your personal details to use all platform features</p>
-          <button class="hidden" (click)="toggleForm()">Sign In</button>
+          <p>Want to join us!</p>
+          <button class="hidden" (click)="toggleForm()">Sign Up</button>
         </div>
         <div class="toggle-panel toggle-right">
           <h1>Welcome!</h1>
-          <p>Enter your personal details to use all site features</p>
-          <button class="hidden" (click)="toggleForm()">Sign Up</button>
+          <p>Already have an account!</p>
+          <button class="hidden" (click)="toggleForm()">Sign In</button>
         </div>
       </div>
     </div>
