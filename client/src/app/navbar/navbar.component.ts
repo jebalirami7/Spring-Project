@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -9,5 +10,12 @@ import { RouterModule } from '@angular/router';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  
+  isCoursesRoute: boolean = false;
 
+constructor(private router: Router) {
+  router.events.subscribe((val) => {
+    this.isCoursesRoute = router.url === '/dashboard';
+  });
+}
 }

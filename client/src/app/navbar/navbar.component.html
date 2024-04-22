@@ -9,7 +9,7 @@
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <a routerLink="/" class="nav-item nav-link" routerLinkActive="active" >Home</a>
             <a routerLink="/myprofile" class="nav-item nav-link" routerLinkActive="active">About</a>
-            <a routerLink="/" class="nav-item nav-link" routerLinkActive="active">Courses</a>
+            <a routerLink="/dashboard" class="nav-item nav-link" routerLinkActive="active">Courses</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Filieres</a>
                 <div class="dropdown-menu fade-down m-0">
@@ -21,6 +21,19 @@
             </div>
             <a routerLink="/" class="nav-item nav-link" routerLinkActive="active">Contact</a>
         </div>
-        <a routerLink="/login" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
+        <div *ngIf="isCoursesRoute; else joinNowButton" class="notification--profile">
+            <div class="picon bell">
+              <i class="ri-notification-2-line"></i>
+            </div>
+            <div class="picon chat">
+              <i class="ri-wechat-2-line"></i>
+            </div>
+            <div class="picon profile">
+              <img src="../../assets/images/man3.jpg" alt="">
+            </div>
+          </div>
+          <ng-template #joinNowButton>
+            <a routerLink="/login" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
+          </ng-template>
     </div>
 </nav>
