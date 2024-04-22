@@ -32,12 +32,14 @@ public class User {
     private String role;
     @Transient
     private int age;
-
+    @OneToMany(mappedBy = "user")
+    private List<UserCourse> userCourses;
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviewedCourses;
     @OneToMany(mappedBy = "creator")
     private List<Course> created_courses;
     // @ManyToMany(mappedBy = "users")
     // private List<Course> courses;
-
     public int getAge() {
         return Period.between(this.dob, LocalDate.now()).getYears();
     }

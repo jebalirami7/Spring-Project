@@ -11,9 +11,7 @@ import lombok.Data;
 @Data
 @PrimaryKeyJoinColumn(name = "id")
 public class Tutor extends User {
-
+    private String username="abc";
     private String expertise;
-    @OneToMany(mappedBy = "creator")
-    private List<Course> created_courses;
 
 }
