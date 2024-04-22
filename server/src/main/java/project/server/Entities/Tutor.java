@@ -11,6 +11,5 @@ public class Tutor extends User {
 
     private String expertise;
     
-    // Additional properties and methods specific to Tutor
 
 }

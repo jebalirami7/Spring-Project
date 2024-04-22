@@ -14,8 +14,7 @@ public class Student extends User {
     @ManyToOne
     @JoinColumn(name = "section_id")
     private Section section;
-    private String major;
     
-    // Additional properties and methods specific to Student
+
 
 }
