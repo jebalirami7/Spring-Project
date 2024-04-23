@@ -21,7 +21,7 @@
             </div>
             <a routerLink="/" class="nav-item nav-link" routerLinkActive="active">Contact</a>
         </div>
-        <div *ngIf="isCoursesRoute; else joinNowButton" class="notification--profile">
+        <div *ngIf="isLoggedIn; else joinNowButton" class="notification--profile">
             <div class="picon bell">
               <i class="ri-notification-2-line"></i>
             </div>
