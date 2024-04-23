@@ -33,18 +33,17 @@ public class User {
     private String password;
     private String role;
 
-
-    @OneToMany(mappedBy = "creator")
-    private List<Course> created_courses;
-    
-    @OneToMany(mappedBy = "user")
-    private List<Review> reviewedCourses;
-
-    @OneToMany(mappedBy = "user")
-    private List<UserCourse> userCourses;
-    
+    @Transient
+    private int age;
     // @ManyToMany(mappedBy = "users")
     // private List<Course> courses;
+    public int getAge() {
+        return Period.between(this.dob, LocalDate.now()).getYears();
+    }
+
+    // @ManyToMany(mappedBy = "users")
+    // private List<Course> courses;
+
 
 
     
