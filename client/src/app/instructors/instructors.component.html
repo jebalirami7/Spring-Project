@@ -9,10 +9,10 @@
             <div class="gallery" #instructorGalleryCont>
                 <ul class="imgs">
                     <li class="team-item" *ngFor="let instructor of instructors">
-                        <img [src]="instructor.image" style="width: 300px; height: 400px;" alt="{{ instructor.name }}">
+                        <img src="../../assets/images/woman.jpg" style="width: 300px; height: 400px;" alt="{{ instructor.firstName }}">
                         <div class="bg-light text-center p-4">
-                            <h5 class="mb-3">{{ instructor.name }}</h5>
-                            <p class="mb-2">{{ instructor.position }}</p>
+                            <h5 class="mb-3">{{ instructor.firstName }}  {{instructor.lastName}}</h5>
+                            <p class="mb-2">{{ instructor.expertise }}</p>
                             <div class="social-links">
                                 <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
                                 <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>

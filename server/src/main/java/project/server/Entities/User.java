@@ -1,5 +1,7 @@
 package project.server.Entities;
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,11 +28,10 @@ public class User {
     private String email;
     @Column(nullable = false, unique = true)
     private String username ;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String password;
     private String role;
     // private LocalDate dob;
-
     // @Transient
     // private int age;
     // // @ManyToMany(mappedBy = "users")

@@ -1,9 +1,13 @@
+@import "@fortawesome/fontawesome-free/css/all.css";
 .text {
   color: #06bbcc;
 }
 .container-xxl {
   position: relative;
   bottom: 50px;
+}
+.fa-star{
+  color: #06bbcc;
 }
 .gallery {
   align-items: center;
@@ -234,4 +238,8 @@
 
 #comment {
   width: 250px;
+}
+
+.rating {
+  margin-left: 5px;
 }

@@ -19,17 +19,25 @@
                     <a routerLink="/" class="dropdown-item" routerLinkActive="active">Genie Industriel</a>
                 </div>
             </div>
+            
             <a routerLink="/courses" class="nav-item nav-link" routerLinkActive="active">Contact</a>
         </div>
         <div *ngIf="isLoggedIn; else joinNowButton" class="notification--profile">
             <div class="picon bell">
-              <i class="ri-notification-2-line"></i>
+              <i class="fa-solid fa-bell"></i>
             </div>
             <div class="picon chat">
-              <i class="ri-wechat-2-line"></i>
+              <i class="fa-solid fa-comment"></i>
             </div>
             <div class="picon profile">
               <img src="../../assets/images/man3.jpg" alt="">
+              <div class="dropdown-menu1">
+                <ul>
+                  <li><a href="#">Option 1</a></li>
+                  <li><a href="#">Option 2</a></li>
+                  <li><a href="#">Option 3</a></li>
+                </ul>
+              </div>
             </div>
           </div>
           <ng-template #joinNowButton>

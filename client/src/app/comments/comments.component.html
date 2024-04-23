@@ -47,20 +47,25 @@
       </div>
       <div class="gallery" #instructorGalleryCont>
         <ul class="imgs">
-          <li class="team-item" *ngFor="let te of testimonials">
+          <li class="team-item" *ngFor="let c of comments">
             <div class="bg-light text-center p-4">
               <img
                 class="border rounded-circle p-2 mx-auto mb-3"
-                [src]="te.image"
+                src="../../assets/images/man3.jpg"
                 alt=""
                 style="width: 100px; height: 100px"
               />
-              <h5 class="mb-3">{{ te.name }}</h5>
-              <p>{{ te.profession }}</p>
+              <h5 class="mb-3">{{ c.firstName }}  {{c.lastName}}</h5>
+              <div class="mb-3">
+                <small class="fa fa-star " *ngFor="let item of [].constructor(c.rating.nonDecimal); let i = index"></small>
+                <small class="fa fa-star" [style]="{'clip-path': 'rect(0% 0% 100% ' + c.rating.decimal + ')'}"> </small>
+                <small class="rating">{{ c.rating}}</small>
+            </div>
               <div id="comment" class="testimonial-text bg-light text-center p-4">
-                <p class="mb-0">{{ te.content }}</p>
+                <p class="mb-0">{{ c.comment }}</p>
               </div>
             </div>
+            
           </li>
         </ul>
       </div>

@@ -1,46 +1,31 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { InstructorService } from '../services/instructor.service';
 
 @Component({
   selector: 'app-instructors',
   templateUrl: './instructors.component.html',
   styleUrl: './instructors.component.css'
 })
-export class InstructorsComponent {
+export class InstructorsComponent implements OnInit {
+
+  instructors:any;
+
+  constructor(public instructorService: InstructorService) { }
+  
+  ngOnInit(): void {
+    this.instructorService.getAllinstructors().subscribe(
+      res=>{
+        console.log(res);
+        this.instructors=res;
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
+  
   @ViewChild('instructorGalleryCont') instructorGalleryCont!: ElementRef;
 
-  instructors = [
-    {
-      name: 'Instructor 1',
-      position: 'Web Design & Development',
-      image: '../../assets/images/woman.jpg',
-    },
-    {
-      name: 'Instructor 2',
-      position: 'Web Design & Development',
-      image: '../../assets/images/woman1.jpg',
-    },
-    {
-      name: 'Instructor 3',
-      position: 'Web Design & Development',
-      image: '../../assets/images/man1.jpg',
-      
-    },
-    {
-      name: 'Instructor 4',
-      position: 'Web Design & Development',
-      image: '../../assets/images/woman2.jpg',
-    },
-    {
-      name: 'Instructor 5',
-      position: 'Web Design & Development',
-      image: '../../assets/images/man2.jpg',
-    },
-    {
-      name: 'Instructor 6',
-      position: 'Web Design & Development',
-      image: '../../assets/images/man3.jpg',
-    },    
-  ];
 
   scrollLeft(): void {
     this.instructorGalleryCont.nativeElement.style.scrollBehavior = 'smooth';
