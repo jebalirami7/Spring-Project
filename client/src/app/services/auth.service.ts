@@ -10,11 +10,11 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(credentials: any): Observable<any> {
-    return this.http.post<any>(`${environment.apiURL}/auth/generateToken`, credentials);
+    return this.http.post<any>(`${environment.apiURL}/user/login`, credentials);
   }
 
   signup(credentials: any): Observable<any> {
-    return this.http.post<any>(`${environment.apiURL}/auth/addnewuser`, credentials);
+    return this.http.post<any>(`${environment.apiURL}/user`, credentials);
   }
 
   isLoggedIn(): boolean {
