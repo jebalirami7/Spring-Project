@@ -51,11 +51,14 @@ export class LoginComponent {
 
       this.auth.signup(this.signupForm.value).subscribe({
         next: (result) => {
-          this.router.navigate(['/login']);
+          // this.router.navigate(['/login']);
+          this.isLoginFormActive = true;
         },
         error: (err) => {
           this.signupError = "Erreur d'authentification";
           console.log(this.signupError);
+          this.isLoginFormActive = true;
+
         },
       });
       

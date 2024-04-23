@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard, loginGuard } from './auth.guard';
+import { CoursesComponent } from './courses/courses.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,11 @@ const routes: Routes = [
     component: DashboardComponent,
     title: 'dashboard',
     canActivate : [authGuard],
+  },
+  {
+    path:'courses',
+    component: CoursesComponent,
+    title: 'Courses Available'
   },
 ];
 
