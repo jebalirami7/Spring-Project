@@ -17,5 +17,8 @@ public class Student extends User {
     @ManyToOne
     @JoinColumn(name = "section_id")
     private Section section;
-    
+    @OneToMany(mappedBy = "user")
+    private List<UserCourse> userCourses;
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviewedCourses;
 }
