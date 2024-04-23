@@ -14,7 +14,7 @@ export class AuthService {
   }
 
   signup(credentials: any): Observable<any> {
-    return this.http.post<any>(`${environment.apiURL}/user`, credentials);
+    return this.http.post<any>(`${environment.apiURL}/user/`, credentials);
   }
 
   isLoggedIn(): boolean {
