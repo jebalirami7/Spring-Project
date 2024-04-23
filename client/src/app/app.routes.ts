@@ -3,6 +3,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AllCoursesComponent } from './all-courses/all-courses.component';
 
 export const routes: Routes = [
 
@@ -30,5 +31,10 @@ export const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         title: 'dashboard'
+      },
+      {
+        path:'allcourses',
+        component: AllCoursesComponent,
+        title: 'Courses Available'
       }
 ];

@@ -1,0 +1,105 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+.filter {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 20px; 
+  }
+  
+  .filter i.fa-filter {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #555; 
+  }
+  
+  .filter select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc; 
+    background-color: #f9f9f9;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .filter select:hover,
+  .filter select:focus {
+    border-color: #aaa; 
+  }
+
+  .filter option {
+    background-color: #fff;
+    color: #333;
+  }
+  
+
+  .filter option:checked {
+    background-color: #007bff; 
+    color: #fff;
+  }
+  
+
+.courses {
+    margin-top: 30px;
+    
+    
+  }
+  
+  .courses h3 {
+    font-size: 35px;
+    margin-bottom: 10px;
+    text-align: center;
+    
+    font-weight: 600;
+  }
+  
+  .course-grid {
+    display: grid;
+    
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+margin-left: 200px;
+margin-right: 200px;
+  }
+  
+  .course {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #e1e4e3;
+  }
+  
+  .course:hover {
+    transform: translateY(-3px); 
+    box-shadow: 0 4px 8px rgba(31, 185, 193, 0.1); 
+    border: 1px solid #e4e6e6;
+  }
+  
+  .course-picture {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .course-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  
+  .course-details {
+    padding: 10px;
+  }
+  
+  .course-details h4 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .tutor, .rate {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
