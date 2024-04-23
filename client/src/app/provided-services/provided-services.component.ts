@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-the-services',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './the-services.component.html',
-  styleUrl: './the-services.component.css',
+  selector: 'app-provided-services',
+  templateUrl: './provided-services.component.html',
+  styleUrl: './provided-services.component.css',
 })
-export class TheServicesComponent {
+export class ProvidedServicesComponent {
   services: any = [
     {
       name: 'Skilled Instructors',

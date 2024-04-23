@@ -1,7 +1,5 @@
 package project.server.Entities;
 
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -11,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,18 +33,17 @@ public class User {
     private String password;
     private String role;
 
-
-    @OneToMany(mappedBy = "creator")
-    private List<Course> created_courses;
-    
-    @OneToMany(mappedBy = "user")
-    private List<Review> reviewedCourses;
-
-    @OneToMany(mappedBy = "user")
-    private List<UserCourse> userCourses;
-    
+    @Transient
+    private int age;
     // @ManyToMany(mappedBy = "users")
     // private List<Course> courses;
+    public int getAge() {
+        return Period.between(this.dob, LocalDate.now()).getYears();
+    }
+
+    // @ManyToMany(mappedBy = "users")
+    // private List<Course> courses;
+
 
 
     

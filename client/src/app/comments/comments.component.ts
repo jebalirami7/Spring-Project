@@ -3,8 +3,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-comments',
-  standalone: true,
-  imports: [CarouselModule, CommonModule],
   templateUrl: './comments.component.html',
   styleUrl: './comments.component.css',
 })
