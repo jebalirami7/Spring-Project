@@ -42,4 +42,9 @@ public class CourseService {
             throw new RuntimeException("Course not found with id: " + id);
         }
     }
+
+    public List<Course> searchCourses(String subjectName) {
+        return courseRepo.findBySubjectName(subjectName);
+    }
+
 }

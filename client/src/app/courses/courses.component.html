@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<div class="courses">
+    <h3>Available Courses</h3>
+    <div class="filter">
+        <i class="fa-solid fa-filter"></i>
+        <select class="selection">
+            <option class="option">All</option>
+            <option class="option">informatique</option>
+            <option class="option">infotronique</option>
+            <option class="option">genie industriel</option>
+            <option class="option">mecatronique</option>
+        </select>
+    </div>
+    <div class="course-grid">
+      <div class="course" *ngFor="let course of courses">
+
+        <div class="course-picture">
+          <img src='../../assets/images/woman2.jpg' alt="{{course.name}}">
+
+        </div>
+        <div class="course-details">
+          <h4>{{course.name}}</h4>
+          <p class="tutor">{{course.tutor}}</p>
+          <p class="rate">Rate: ★★★★☆</p>
+        </div>
+      </div>
+
+    </div>
+  </div>

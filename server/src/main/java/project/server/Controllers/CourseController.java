@@ -35,6 +35,11 @@ public class CourseController {
         return createdCourse;
     }
 
+    @PostMapping("/search")
+    public ResponseEntity<List<Course>> searchCourses(@RequestBody String subjectName) {
+        return ResponseEntity.ok(courseService.searchCourses(subjectName));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Course> updateCourse(@PathVariable int id, @RequestBody Course course) {
         Course updatedCourse = courseService.updateCourse(id, course);
