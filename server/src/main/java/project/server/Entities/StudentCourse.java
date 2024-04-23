@@ -1,7 +1,6 @@
 package project.server.Entities;
 
-import java.time.LocalDate;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,24 +13,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "user_course")
+@Table(name = "student_course")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserCourse {
+public class StudentCourse {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private LocalDate date;
+    private String date;
     private float progress = 0;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
+    private Student student;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
     private Course course;
 
 }
