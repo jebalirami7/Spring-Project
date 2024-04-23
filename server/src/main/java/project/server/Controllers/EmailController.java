@@ -1,24 +1,28 @@
 package project.server.Controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import project.server.Entities.EmailMessage;
-import project.server.Services.EmailSenderService;
+import project.server.Services.Implementations.EmailSenderServiceImpl;
 
 @RestController
+@RequestMapping("/email")
 public class EmailController {
-
-    @Autowired
-    private EmailSenderService emailSenderService;
+    
+    private final EmailSenderServiceImpl emailSenderService;
+    
+    public EmailController(EmailSenderServiceImpl emailSenderService) {
+        this.emailSenderService = emailSenderService;
+    }
 
     @PostMapping("/sendEmail")
-    public ResponseEntity<String> sendEmail(@RequestBody EmailMessage emailMessage) {
+    public String sendEmail(@RequestBody EmailMessage emailMessage) {
+        System.out.println(emailMessage);
         emailSenderService.sendEmail(emailMessage.getTo(), emailMessage.getSubject(), emailMessage.getMessage());
-        return ResponseEntity.ok("Email sent successfully");
+        return "Email sent successfully";
     }
 
 }

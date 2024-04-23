@@ -14,12 +14,8 @@ import java.util.Optional;
 @RequestMapping("/subjects")
 public class SubjectController {
 
-    private final SubjectService subjectService;
-
     @Autowired
-    public SubjectController(SubjectService subjectService) {
-        this.subjectService = subjectService;
-    }
+    private SubjectService subjectService;
 
     @GetMapping
     public ResponseEntity<List<Subject>> getAllSubjects() {
@@ -51,4 +47,5 @@ public class SubjectController {
         subjectService.deleteSubject(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    
 }

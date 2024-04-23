@@ -21,6 +21,7 @@ import { SearchComponent } from './search/search.component';
 import { AuthService } from './services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { CoursesComponent } from './courses/courses.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     InstructorsComponent,
     ProvidedServicesComponent,
     SearchComponent,
+    CoursesComponent,
   ],
   imports: [
     BrowserModule,
