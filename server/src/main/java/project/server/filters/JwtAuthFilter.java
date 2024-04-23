@@ -1,7 +1,6 @@
 package project.server.filters;
 
 import project.server.Services.JwtService;
-import project.server.Services.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
