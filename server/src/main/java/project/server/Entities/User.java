@@ -1,13 +1,10 @@
 package project.server.Entities;
 
-import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,14 +29,15 @@ public class User {
     @Column(nullable = false, unique = true)
     private String password;
     private String role;
+    // private LocalDate dob;
 
-    @Transient
-    private int age;
-    // @ManyToMany(mappedBy = "users")
-    // private List<Course> courses;
-    public int getAge() {
-        return Period.between(this.dob, LocalDate.now()).getYears();
-    }
+    // @Transient
+    // private int age;
+    // // @ManyToMany(mappedBy = "users")
+    // // private List<Course> courses;
+    // public int getAge() {
+    //     return Period.between(this.dob, LocalDate.now()).getYears();
+    // }
 
     // @ManyToMany(mappedBy = "users")
     // private List<Course> courses;

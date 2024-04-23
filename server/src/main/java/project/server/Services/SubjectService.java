@@ -11,12 +11,8 @@ import java.util.Optional;
 @Service
 public class SubjectService {
 
-    private final SubjectRepository subjectRepository;
-
     @Autowired
-    public SubjectService(SubjectRepository subjectRepository) {
-        this.subjectRepository = subjectRepository;
-    }
+    private SubjectRepository subjectRepository;
 
     public List<Subject> getAllSubjects() {
         return subjectRepository.findAll();

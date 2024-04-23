@@ -7,10 +7,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrimaryKeyJoinColumn;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @PrimaryKeyJoinColumn(name = "id")
 public class Student extends User {
     
@@ -21,4 +23,5 @@ public class Student extends User {
     private List<UserCourse> userCourses;
     @OneToMany(mappedBy = "user")
     private List<Review> reviewedCourses;
+
 }
