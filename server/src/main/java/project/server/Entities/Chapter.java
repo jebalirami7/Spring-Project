@@ -2,6 +2,7 @@ package project.server.Entities;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,8 +25,8 @@ public class Chapter {
     private int id;
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
     private Course course;
 
     @OneToMany(mappedBy = "chapter")
