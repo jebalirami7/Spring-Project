@@ -10,7 +10,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(credentials: any): Observable<any> {
-    return this.http.post<any>(`${environment.apiURL}/user/login`, credentials);
+    return this.http.post<any>(`${environment.apiURL}/auth/generateToken`, credentials);
   }
 
   signup(credentials: any): Observable<any> {

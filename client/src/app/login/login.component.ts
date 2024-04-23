@@ -51,14 +51,13 @@ export class LoginComponent {
 
       this.auth.signup(this.signupForm.value).subscribe({
         next: (result) => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/login']);
         },
         error: (err) => {
           this.signupError = "Erreur d'authentification";
           console.log(this.signupError);
         },
       });
-      // console.log(username, password, firstName, lastName, email);
       
     } else {
       this.signupError = 'Please enter valid credentials';
@@ -76,15 +75,20 @@ export class LoginComponent {
       const password = passwordControl.value;
       this.loginError = '';
 
-      // this.auth.login(this.loginForm.value).subscribe({
-      //   next: (result) => {
-      //     this.auth.setToken(result.token);
-      //     this.router.navigate(['/reclamations/all']);
-      //   },
-      //   error: (err) => {
-      //     this.loginError = "Erreur d'authentification";
-      //   },
-      // });
+      let credentials = {
+        username: username,
+        password: password
+      }
+
+       this.auth.login(credentials).subscribe({
+         next: (result) => {  
+          this.auth.setToken(result.token);
+          this.router.navigate(['/']);
+         },
+         error: (err) => {
+          this.loginError = "Erreur d'authentification";
+        },
+       });
     } else {
       this.loginError = 'Please enter valid credentials';
     }
