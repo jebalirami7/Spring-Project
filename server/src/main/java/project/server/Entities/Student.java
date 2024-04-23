@@ -17,5 +17,5 @@ public class Student extends User {
     @ManyToOne
     @JoinColumn(name = "section_id")
     private Section section;
-    private String username="abc";
+    
 }
