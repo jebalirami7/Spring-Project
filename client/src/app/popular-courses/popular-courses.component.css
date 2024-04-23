@@ -1,24 +1,27 @@
-@import '@fortawesome/fontawesome-free/css/all.css';
+@import "@fortawesome/fontawesome-free/css/all.css";
 .course-item img {
-    transition: .5s;
+  transition: 0.5s;
 }
-
 
 .course-item:hover img {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
-.section-title{
-    color: #06BBCC;
-    font-size: 20px;
+.section-title {
+  color: #06bbcc;
+  font-size: 20px;
 }
-.fa{
-    color: #06BBCC;
+.fa {
+  color: #06bbcc;
 }
-.btn{
-    background-color: #141414;
-    border-color: #06BBCC;
+.btn {
+  background-color: #141414;
+  border-color: #06bbcc;
 }
-.btn:hover{
-    background-color: #59e1af;
-    border-color: #59e1af;
+.btn:hover {
+  background-color: #59e1af;
+  border-color: #59e1af;
+}
+
+.rating {
+  margin-left: 5px;
 }

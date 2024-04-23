@@ -1,45 +1,60 @@
 package project.server.Controllers;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import project.server.Entities.AuthRequest;
 import project.server.Entities.User;
+import project.server.Services.JwtService;
 import project.server.Services.UserService;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "/user")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserService service;
 
-	// @GetMapping
-	// public List<User> getUsers() {
-	// 	return userService.getUsers();
-	// }
+    @Autowired
+    private JwtService jwtService;
 
-    // @GetMapping(path = "{id}")
-    // public User getUser(@PathVariable("id") int id) {
-    //     return userService.getUser(id);
-    // }
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
-    // @PostMapping    
-    // public User createUser(@RequestBody User user) {
-    //     return userService.createUser(user);
-    // }
+    @GetMapping("/welcome")
+    public String welcome() {
+        return "Welcome this endpoint is not secure";
+    }
 
-    // @DeleteMapping(path = "{id}")
-    // public String deleteUser(@PathVariable("id") int id) {
-    //     return userService.deleteUser(id);
-    // }
+    @PostMapping("/")
+    public User addNewUser(@RequestBody User userInfo) {
+        return service.addUser(userInfo);
+    }
+
+    @GetMapping("/user/{id}/profile")
+    public String userProfile(@PathVariable("id") int id){
+        return "Welcome to User Profile" + id  ;
+    }
+
+
+    @PostMapping("/login")
+    public Map<String, String> authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+        if (authentication.isAuthenticated()) {
+            String token = jwtService.generateToken(authRequest.getUsername());
+            Map<String, String> response = new HashMap<>();
+            response.put("token", token);
+            return response;
+        } else {
+            throw new UsernameNotFoundException("Invalid user request!");
+        }
+    }
 
 }

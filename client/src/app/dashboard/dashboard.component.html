@@ -1,0 +1,107 @@
+<app-navbar></app-navbar>
+
+<div class="main">
+    <div class="sidebar">
+        <ul class="sidebar--items">
+            <li *ngFor="let item of sidebarItems; let i = index">
+              <a href="#" [id]="i === 0 ? 'active--link' : null">
+                <span class="icon icon-{{ i + 1 }}"><i class="ri-{{ item.iconClass }}"></i></span>
+                <span class="sidebar--item">{{ item.label }}</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="sidebar--bottom-items">
+            <li *ngFor="let item of bottomSidebarItems; let i = index">
+              <a href="#">
+                <span class="icon icon-{{ i+2 }}"><i class="ri-{{ item.iconClass }}"></i></span>
+                <span class="sidebar--item">{{ item.label }}</span>
+              </a>
+            </li>
+          </ul>
+    </div>
+    <div class="main--content">
+        <div class="overview">
+            <div class="title">
+                <h2 class="section--title">Overview</h2>
+                <select name="date" id="date" class="dropdown">
+                    <option value="today">Today</option>
+                    <option value="lastweek">Last Week</option>
+                    <option value="lastmonth">Last Month</option>
+                    <option value="lastyear">Last Year</option>
+                    <option value="alltime">All Time</option>
+                </select>
+            </div>
+            <div class="cards">
+                <div class="card" *ngFor="let card of cards; let i = index" [class]="['card', 'card-' + (i + 1)]">
+                  <div class="card--data">
+                    <div class="card--content">
+                      <h5 class="card--title">{{ card.title }}</h5>
+                      <h1>{{ card.value }}</h1>
+                    </div>
+                    <i class="ri-{{ card.icon }} card--icon--lg"></i>
+                  </div>
+                  <div class="card--stats">
+                    <span><i class="ri-bar-chart-fill card--icon stat--icon"></i>{{ card.stats[0] }}</span>
+                    <span><i class="ri-arrow-up-s-fill card--icon up--arrow"></i>{{ card.stats[1] }}</span>
+                    <span><i class="ri-arrow-down-s-fill card--icon down--arrow"></i>{{ card.stats[2] }}</span>
+                  </div>
+                </div>
+              </div>
+              
+        </div>
+        <div class="tutors">
+            <div class="title">
+                <h2 class="section--title">Tutors</h2>
+                <div class="tutors--right--btns">
+                
+                    <button class="add"><i class="ri-add-line"></i>Add Tutor</button>
+                </div>
+            </div>
+            <div class="tutors--cards">
+                <a href="#" class="tutor--card" *ngFor="let tutor of tutors">
+                  <div class="img--box--cover">
+                    <div class="img--box">
+                      <img [src]="tutor.imageUrl" alt="">
+                    </div>
+                  </div>
+                  <p>{{ tutor.name }}</p>
+                </a>
+              </div>
+              
+        </div>
+        <div class="recent--students">
+            <div class="title">
+                <h2 class="section--title">Recent Students</h2>
+                <button class="add"><i class="ri-add-line"></i>Add Student</button>
+            </div>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Filiere</th>
+                            <th>Annee</th>
+                            <th>Settings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let student of students">
+                          <td>{{ student.name }}</td>
+                          <td>{{ student.age }}</td>
+                          <td>{{ student.filiere }}</td>
+                          <td>{{ student.annee }}</td>
+                          <td>
+                            <span>
+                              <i class="ri-edit-line edit"></i>
+                              <i class="ri-delete-bin-line delete"></i>
+                            </span>
+                          </td>
+                        </tr>
+                      </tbody>
+                      
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,48 +1,45 @@
 package project.server.Services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import project.server.Entities.Course;
 import project.server.Repositories.CourseRepo;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class CourseService {
-    
+
     @Autowired
     private CourseRepo courseRepo;
-    // @Autowired
-    // private UserService userService;
 
-
-    public List<Course> getCourses() {
+    public List<Course> getAllCourses() {
         return courseRepo.findAll();
     }
 
-    public Course getCourse(int id) {
-        return courseRepo.findById(id).orElse(null);
+    public Optional<Course> getCourseById(int id) {
+        return courseRepo.findById(id);
     }
 
-    public Course addCourse(Course course) {
-        // course.setCreator(userService.getUser(course.getCreator().getId()));
+    public Course createCourse(Course course) {
         return courseRepo.save(course);
     }
 
-    public Course updateCourse(Course course) {
-        boolean exists = courseRepo.existsById(course.getId());
-        if (!exists) 
-            throw new IllegalStateException("Course with id " + course.getId() + " does not exist");
-        return courseRepo.save(course);
+    public Course updateCourse(int id, Course updatedCourse) {
+        if (courseRepo.existsById(id)) {
+            updatedCourse.setId(id);
+            return courseRepo.save(updatedCourse);
+        } else {
+            throw new RuntimeException("Course not found with id: " + id);
+        }
     }
 
-    public String deleteCourse(int id) {
-        boolean exists = courseRepo.existsById(id);
-        if (!exists) 
-            throw new IllegalStateException("Course with id " + id + " does not exist");
-        courseRepo.deleteById(id);
-        return "Course with id " + id + " was successfully deleted";
+    public void deleteCourse(int id) {
+        if (courseRepo.existsById(id)) {
+            courseRepo.deleteById(id);
+        } else {
+            throw new RuntimeException("Course not found with id: " + id);
+        }
     }
-
 }

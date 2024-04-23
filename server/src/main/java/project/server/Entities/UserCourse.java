@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 public class UserCourse {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private LocalDate date;
     private float progress = 0;
