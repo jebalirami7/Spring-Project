@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard, loginGuard } from './auth.guard';
 import { CoursesComponent } from './courses/courses.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,11 @@ const routes: Routes = [
     path:'courses',
     component: CoursesComponent,
     title: 'Courses Available'
+  },
+  {
+    path: 'quiz',
+    component: QuizComponent, // Route for the quiz page
+    title: 'Quiz'
   },
 ];
 

@@ -22,6 +22,7 @@ import { AuthService } from './services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { CoursesComponent } from './courses/courses.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CoursesComponent } from './courses/courses.component';
     ProvidedServicesComponent,
     SearchComponent,
     CoursesComponent,
+    QuizComponent,
   ],
   imports: [
     BrowserModule,
