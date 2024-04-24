@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+
+<div class="quiz-container">
+  <h1 class="quiz-heading">Welcome to the Quiz!</h1>
+  
+  <!-- Question Section -->
+  <div>
+    <div *ngIf="currentQuestion">
+      <h2 class="question">{{ currentQuestion }}</h2>
+      <div class="options" *ngFor="let option of options[currentIndex]; let i = index">
+        <input type="radio" id="{{ 'option-' + i }}" name="answer" 
+               (change)="selectOption(i)" [checked]="selectedOptions[currentIndex] === i">
+        <label for="{{ 'option-' + i }}">{{ option }}</label>
+      </div>
+    </div>
+    <!-- Navigation Buttons -->
+    <div class="navigation-buttons">
+      <button class="btn" (click)="prevQuestion()" [disabled]="currentIndex === 0 || currentQuestion === undefined">Previous</button>
+      <button class="btn" (click)="nextQuestion()" [disabled]="currentIndex === questions.length - 1 || currentQuestion === undefined || !answerChosen">Next</button>
+      <button class="btn submit-btn" (click)="submitQuiz()" [disabled]="!quizCompleted || currentQuestion === undefined">Submit Quiz</button>
+    </div>
+  </div>
+  
+  <!-- Result Section -->
+  <div class="result" *ngIf="quizCompleted">
+    <h2>Your Score: {{ score }} / {{ questions.length }}</h2>
+    <button class="btn" (click)="restartQuiz()">Restart Quiz</button>
+  </div>
+</div>
