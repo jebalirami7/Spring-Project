@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-
+import { Router } from '@angular/router';
 @Component({
   selector: "app-courses",
   templateUrl: "./courses.component.html",
@@ -28,4 +28,9 @@ export class CoursesComponent {
       image: "../../assets/images/woman2.jpg",
     },
   ];
+  constructor(private router: Router) { }
+
+  goToQuizPage() {
+    this.router.navigate(['/quiz']); 
+  }
 }
