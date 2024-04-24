@@ -23,6 +23,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { CoursesComponent } from './courses/courses.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     SearchComponent,
     CoursesComponent,
     EditProfileComponent,
+    QuizComponent,
   ],
   imports: [
     BrowserModule,

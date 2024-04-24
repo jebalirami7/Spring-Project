@@ -19,8 +19,9 @@ public class Quizz {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String question;
-    private String[] reponses;
+    private String[] questions;
+    private int[] reponses;
+    private String[][] options;
 
     @ManyToOne
     @JoinColumn(name = "chapter_id")

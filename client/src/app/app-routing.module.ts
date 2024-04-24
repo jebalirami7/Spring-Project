@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard, loginGuard } from './auth.guard';
 import { CoursesComponent } from './courses/courses.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,12 @@ const routes: Routes = [
     path:'myprofile/edit',
     component: EditProfileComponent,
     title: 'Edit Profile',
+    canActivate : [authGuard],
+  },
+  {
+    path: 'quiz',
+    component: QuizComponent,
+    title: 'Quiz',
     canActivate : [authGuard],
   },
 ];
