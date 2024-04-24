@@ -5,6 +5,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import project.server.Entities.User;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -18,8 +20,14 @@ import java.util.function.Function;
 public class JwtService {
 
     public static final String SECRET = "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437";
-    public String generateToken(String userName) {
+    public String generateToken(User user, String userName) {
         Map<String, Object> claims = new HashMap<>();
+        claims.put("id", user.getId());
+        claims.put("userName", userName);
+        claims.put("imagePath", user.getImagePath());
+        claims.put("role", user.getRole());
+        claims.put("name", user.getFirstName() + " " + user.getLastName());
+
         return createToken(claims, userName);
     }
 

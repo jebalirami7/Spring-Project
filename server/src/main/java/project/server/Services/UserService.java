@@ -27,22 +27,31 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
-    public Optional<User> getUserById(Long id) {
-        return repository.findById(id);
+    public Optional<User> getUser(Long id) {
+        Optional<User> user = repository.findById(id);
+        user.ifPresent(value -> value.setPassword(null));
+        return user;
     }
 
     public List<User> getAllUsers() {
         return repository.findAll();
     }
 
-    public User updateUser(User user, Long id) {
+    public User updateUser(Long id, User user) {
         User userToUpdate = repository.findById(id).orElse(null);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if (userToUpdate != null) {
-            userToUpdate.setUsername(user.getUsername());
-            userToUpdate.setPassword(user.getPassword());
-            userToUpdate.setRole(user.getRole());
-            userToUpdate.setEmail(user.getEmail());
-            return repository.save(userToUpdate); 
+            if (user.getFirstName() != null)
+                userToUpdate.setFirstName(user.getFirstName());
+            if (user.getLastName() != null)
+                userToUpdate.setLastName(user.getLastName());
+            if (user.getImagePath() != null)
+                userToUpdate.setImagePath(user.getImagePath());
+            if (user.getPassword() != null)
+                userToUpdate.setPassword(encoder.encode(user.getPassword()));
+            repository.save(userToUpdate); 
+            userToUpdate.setPassword(null);
+            return userToUpdate;
         }
         return null;
     }
@@ -56,6 +65,10 @@ public class UserService implements UserDetailsService {
         Optional<User> userDetail = repository.findByUsername(username);
         return userDetail.map(UserInfoDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found " + username));
+    }
+
+    public User getUserByUsername(String username) {
+        return repository.findByUsername(username).orElse(null);
     }
 
 }

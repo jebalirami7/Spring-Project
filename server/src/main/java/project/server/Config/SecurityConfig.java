@@ -1,6 +1,6 @@
-package project.server.config;
+package project.server.Config;
 
-import project.server.filters.JwtAuthFilter;
+import project.server.Filters.JwtAuthFilter;
 import project.server.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
