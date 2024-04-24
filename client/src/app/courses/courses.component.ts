@@ -1,36 +1,36 @@
-import { Component } from "@angular/core";
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { CoursesService } from '../services/courses.service';
+import { HttpErrorResponse } from "@angular/common/http";
+import { AuthService } from "../services/auth.service";
+import { Router } from "@angular/router";
+import { Course } from "../entities/course";
+
 @Component({
   selector: "app-courses",
   templateUrl: "./courses.component.html",
   styleUrl: "./courses.component.css",
 })
-export class CoursesComponent {
-  courses = [
-    {
-      name: "course 1",
-      tutor: "hamma",
-      image: "../../assets/images/woman2.jpg",
-    },
-    {
-      name: "course 2",
-      tutor: "hamma",
-      image: "../../assets/images/woman2.jpg",
-    },
-    {
-      name: "course 3",
-      tutor: "hamma",
-      image: "../../assets/images/woman2.jpg",
-    },
-    {
-      name: "course4",
-      tutor: "nasro",
-      image: "../../assets/images/woman2.jpg",
-    },
-  ];
-  constructor(private router: Router) { }
+export class CoursesComponent implements OnInit {
+  courses: Course[];
 
-  goToQuizPage() {
-    this.router.navigate(['/quiz']); 
+  constructor(private coursesService: CoursesService, private auth: AuthService, private router: Router) {
+    this.courses = [];
+  }
+
+  ngOnInit() {
+    this.loadReclamation();
+  }
+
+  loadReclamation() {
+    this.coursesService.getAllCourses().subscribe({
+      next: res => {
+        this.courses = res;
+      }, error: (err: HttpErrorResponse) => {
+        if (err.status === 401) {
+          this.auth.logout();
+          this.router.navigate(['/']);
+        }
+      }
+    });
   }
 }

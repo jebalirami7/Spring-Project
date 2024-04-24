@@ -1,6 +1,8 @@
 package project.server.Entities;
 
-import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -14,9 +16,10 @@ import lombok.Setter;
 @PrimaryKeyJoinColumn(name = "id")
 public class Tutor extends User {
 
-    private String username="abc";
     private String expertise;
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "creator")
-    private List<Course> created_courses;
+    private Set<Course> courses;
 
 }
