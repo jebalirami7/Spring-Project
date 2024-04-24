@@ -1,35 +1,29 @@
 <app-navbar></app-navbar>
 <div class="profile-container">
-    <div class="profile-header">
-      <div class="profile-picture">
-        
-        <img src="../../assets/images/man2.jpg" alt="Profile Picture">
-         
-      </div>
-      <div class="profile-details">
-        <a href=""> <i class="fas fa-camera"></i> </a>
-        <h2 class="username">John Doe</h2>
-       
-        <button class="edit-button">Edit Profile</button>
-      </div>
+  <div class="profile-header">
+    <div class="profile-picture">
+      <img src="../../assets/images/man2.jpg" alt="Profile Picture" />
     </div>
-    <div class="courses">
-      <h3>Joined Courses</h3>
-      <div class="course-grid">
-        <div class="course" *ngFor="let course of courses">
-            
-          <div class="course-picture">
-            <img [src]="course.image" alt="{{course.name}}">
-            
-          </div>
-          <div class="course-details">
-            <h4>{{course.name}}</h4>
-            <p class="tutor">{{course.tutor}}</p>
-            <p class="rate">Rate: ★★★★☆</p>
-          </div>
+    <div class="profile-details">
+      <a href=""> <i class="fas fa-camera"></i> </a>
+      <h2 class="username">John Doe</h2>
+
+      <button routerLink="/editProfile" class="edit-button">Edit Profile</button>
+    </div>
+  </div>
+  <div class="courses">
+    <h3>Joined Courses</h3>
+    <div class="course-grid">
+      <div class="course" *ngFor="let course of courses">
+        <div class="course-picture">
+          <img [src]="course.imagePath" alt="" />
         </div>
-       
+        <div class="course-details">
+          <h4>{{ course.name }}</h4>
+          <p class="tutor">{{ course.creator.firstName + " " + course.creator.lastName}}</p>
+          <p class="rate">Rate: ★★★★☆</p>
+        </div>
       </div>
     </div>
   </div>
-  
+</div>

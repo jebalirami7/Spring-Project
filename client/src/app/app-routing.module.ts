@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard, loginGuard } from './auth.guard';
 import { CoursesComponent } from './courses/courses.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,11 @@ const routes: Routes = [
     component: CoursesComponent,
     title: 'Courses Available'
   },
+  {
+    path:'editProfile',
+    component: EditProfileComponent,
+    title: 'Edit Profile'
+  }
 ];
 
 @NgModule({

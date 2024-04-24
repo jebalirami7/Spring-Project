@@ -2,6 +2,9 @@ package project.server.Entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,23 +26,27 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    private String description;   
-    private float progress = 0; 
+    private String description;  
+    private String imagePath = "../../assets/images/woman2.jpg";
+    private float rating;
 
-    @ManyToOne
-    @JoinColumn(name = "creator_id")
-    private User creator;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "creator_id", referencedColumnName = "id")
+    private Tutor creator;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "course")
     private List<Review> reviews;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "course")
-    private List<UserCourse> userCourses;
+    private List<StudentCourse> userCourses;
 
-    @ManyToOne
-    @JoinColumn(name = "subject_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "subject_id", referencedColumnName = "id")
     private Subject subject;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "course")
     private List<Chapter> chapters;
 

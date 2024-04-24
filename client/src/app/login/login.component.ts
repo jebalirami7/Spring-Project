@@ -30,6 +30,7 @@ export class LoginComponent {
       email: [''],
       username: [''],
       password: [''],
+      dob: [''],
       role: ['ROLE_USER']
     });
   }
@@ -40,13 +41,9 @@ export class LoginComponent {
     const emailControl = this.signupForm.get('email');
     const usernameControl = this.signupForm.get('username');
     const passwordControl = this.signupForm.get('password');
+    const dobControl = this.signupForm.get('dob');
 
-    if (usernameControl && passwordControl && usernameControl.valid && passwordControl.valid && firstNameControl && lastNameControl && emailControl && firstNameControl.valid && lastNameControl.valid && emailControl.valid) {
-      const username = usernameControl.value;
-      const password = passwordControl.value;
-      const firstName = firstNameControl.value;
-      const lastName = lastNameControl.value;
-      const email = emailControl.value;
+    if (usernameControl && passwordControl && usernameControl.valid && passwordControl.valid && firstNameControl && lastNameControl && emailControl && firstNameControl.valid && lastNameControl.valid && emailControl.valid && dobControl && dobControl.valid) {
       this.signupError = '';
 
       this.auth.signup(this.signupForm.value).subscribe({
@@ -57,16 +54,14 @@ export class LoginComponent {
         error: (err) => {
           this.signupError = "Erreur d'authentification";
           console.log(this.signupError);
-          this.isLoginFormActive = true;
-
         },
       });
       
     } else {
       this.signupError = 'Please enter valid credentials';
       console.log(this.signupError);
-      console.log(this.signupForm.value);
     }
+    console.log(this.signupForm.value);
   }
 
   loginSubmit() {

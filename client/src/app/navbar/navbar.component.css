@@ -78,6 +78,7 @@
     opacity: 0;
     visibility: hidden;
     transition: 0.5s;
+    right: 0;
   }
 
   .navbar .dropdown-menu.fade-down {
@@ -117,14 +118,22 @@
 .notification--profile {
   display: flex;
   align-items: center;
-  margin-right: 20px;
 }
 
 .picon {
-  margin-left: 20px;
+  margin-right: 20px;
   font-size: 1.1rem;
   padding: 5px;
   border-radius: 5px;
+}
+
+.picon.profile {
+  margin-right: 50px;
+}
+
+.lock {
+  color: #5073fb;
+  background-color: rgba(80, 115, 251, 0.2);
 }
 
 .bell {
@@ -153,4 +162,12 @@ img {
   height: 100%;
   object-fit: cover;
   cursor: pointer;
+}
+
+#profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 10px 5px 0;
 }
