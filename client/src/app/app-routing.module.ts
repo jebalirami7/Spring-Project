@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard, loginGuard } from './auth.guard';
 import { CoursesComponent } from './courses/courses.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   {
@@ -16,19 +17,19 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    title: 'sign in',
+    title: 'Sign In',
     canActivate: [loginGuard],
   },
   {
     path: 'register',
     component: LoginComponent,
-    title: 'sign up',
+    title: 'Sign Up',
     canActivate: [loginGuard],
   },
   {
     path: 'myprofile',
     component: ProfileComponent,
-    title: 'myprofile',
+    title: 'My Profile',
     canActivate: [authGuard],
   },
   {
@@ -41,6 +42,12 @@ const routes: Routes = [
     path:'courses',
     component: CoursesComponent,
     title: 'Courses Available'
+  },
+  {
+    path:'myprofile/edit',
+    component: EditProfileComponent,
+    title: 'Edit Profile',
+    canActivate : [authGuard],
   },
 ];
 

@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <h2 class="text">Edit Your Profile</h2>
+
+  <div class="col">
+    <form [formGroup]="myForm" (ngSubmit)="save()" >
+        <input type="text" placeholder="First Name" formControlName="firstName" />
+        <input type="text" placeholder="Last Name" formControlName="lastName" />
+        <input type="text" placeholder="Username" formControlName="username" readonly />
+        <input type="email" placeholder="Email" formControlName="email" readonly />
+        <input type="date" formControlName="dob">
+        <input type="password" placeholder="Password" formControlName="password" />
+        <input type="password" placeholder="Repeat Password" formControlName="rePwd" />
+        <div *ngIf="error" class="error-msg"> {{ error }}</div>
+        <div class="button-container">
+        <button class="btn">Update</button>
+        </div>
+    </form>
+
+    <!-- <div class="profile-header">
+      <input class="input-file" type="file" accept="image/jpeg, image/png, image/jpg" />
+      <div class="profile-picture">
+        <img [src]="currentUser.imagePath" alt="Profile Picture" />
+      </div>
+      <div class="profile-details">
+        <a href=""> <i class="fas fa-camera"></i> </a>  
+      </div>
+    </div> -->
+  </div>
+</div>

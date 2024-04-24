@@ -18,10 +18,10 @@ export class CoursesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadReclamation();
+    this.loadCourses();
   }
 
-  loadReclamation() {
+  loadCourses() {
     this.coursesService.getAllCourses().subscribe({
       next: res => {
         this.courses = res;

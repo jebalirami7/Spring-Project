@@ -2,13 +2,13 @@
 <div class="profile-container">
   <div class="profile-header">
     <div class="profile-picture">
-      <img src="../../assets/images/man2.jpg" alt="Profile Picture" />
+      <img [src]="currentUser.imagePath" alt="Profile Picture" />
     </div>
     <div class="profile-details">
       <a href=""> <i class="fas fa-camera"></i> </a>
-      <h2 class="username">John Doe</h2>
+      <h2 class="username">{{ currentUser.name }}</h2>
 
-      <button class="edit-button">Edit Profile</button>
+      <a routerLink="/myprofile/edit" class="edit-button">Edit Profile</a>
     </div>
   </div>
   <div class="courses">

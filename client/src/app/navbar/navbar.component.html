@@ -30,7 +30,7 @@
             </div>
             <div class="nav-item dropdown">
                 <div class="picon profile">
-                  <img src="../../assets/images/man3.jpg" alt="">
+                  <img [src]="currentUser.imagePath" alt="user-img">
                 </div>
                 <div class="dropdown-menu fade-down m-0">
                   <a routerLink="/myprofile" class="dropdown-item" routerLinkActive="active">My Profile</a>
