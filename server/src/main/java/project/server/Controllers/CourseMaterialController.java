@@ -85,7 +85,7 @@ public class CourseMaterialController {
         return ResponseEntity.noContent().build();
     }
 
-    	@ExceptionHandler(StorageFileNotFoundException.class)
+    @ExceptionHandler(StorageFileNotFoundException.class)
 	public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
 		return ResponseEntity.notFound().build();
 	}

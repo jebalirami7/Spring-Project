@@ -20,6 +20,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.core.io.Resource;
 
@@ -46,8 +48,14 @@ public class StorageServiceImpl implements StorageService {
 				throw new StorageException("Failed to store empty file.");
 			}
 			System.out.println(file.getOriginalFilename());
+
+			LocalDate date = LocalDate.now();
+			String isoDate = date.format(DateTimeFormatter.ISO_DATE);
+			
+
+
 			Path destinationFile = this.rootLocation.resolve(
-					Paths.get(file.getOriginalFilename()))
+					Paths.get(file.getOriginalFilename()+ isoDate))
 					.normalize().toAbsolutePath();
 			if (!destinationFile.getParent().equals(this.rootLocation.toAbsolutePath())) {
 				// This is a security check
