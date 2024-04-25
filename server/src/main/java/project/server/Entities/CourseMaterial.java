@@ -19,8 +19,9 @@ public class CourseMaterial {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String question;
-    private String[] reponses;
+    private String title;
+    private String content;
+    private String type;
 
     @ManyToOne
     @JoinColumn(name = "chapter_id")
