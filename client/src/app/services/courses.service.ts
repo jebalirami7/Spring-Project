@@ -22,4 +22,11 @@ export class CoursesService {
     return this.http.get<Course[]>(`${environment.apiURL}/course/student/${studentId}`);
   }
 
+  getCourseById(id: String): Observable<any> {
+    return this.http.get<any>(`${environment.apiURL}/course/${id}`);
+  }
+
+  
+
+
 }
