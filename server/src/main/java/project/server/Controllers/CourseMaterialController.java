@@ -56,8 +56,8 @@ public class CourseMaterialController {
         @RequestParam("file") MultipartFile file )
      {
         if ( type.equals("image") && file !=null && !file.isEmpty()) {
-            storageService.store(file);
-            content = file.getOriginalFilename();
+            String fileName = storageService.store(file);
+            content = fileName;
         }
 
 

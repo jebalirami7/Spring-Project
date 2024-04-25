@@ -42,7 +42,7 @@ public class StorageServiceImpl implements StorageService {
 
 
     @Override
-	public void store(MultipartFile file) {
+	public String store(MultipartFile file) {
 		try {
 			if (file.isEmpty()) {
 				throw new StorageException("Failed to store empty file.");
@@ -52,10 +52,10 @@ public class StorageServiceImpl implements StorageService {
 			LocalDate date = LocalDate.now();
 			String isoDate = date.format(DateTimeFormatter.ISO_DATE);
 			
-
+			
 
 			Path destinationFile = this.rootLocation.resolve(
-					Paths.get(file.getOriginalFilename()+ isoDate))
+					Paths.get( isoDate + file.getOriginalFilename()))
 					.normalize().toAbsolutePath();
 			if (!destinationFile.getParent().equals(this.rootLocation.toAbsolutePath())) {
 				// This is a security check
@@ -65,6 +65,7 @@ public class StorageServiceImpl implements StorageService {
 			try (InputStream inputStream = file.getInputStream()) {
 				Files.copy(inputStream, destinationFile,
 					StandardCopyOption.REPLACE_EXISTING);
+					return isoDate + file.getOriginalFilename() ;
 			}
 		}
 		catch (IOException e) {
