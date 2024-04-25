@@ -4,4 +4,5 @@
     <p *ngIf="lecture.type==='text'">
         {{lecture.content}}
     </p>
+    <img *ngIf="lecture.type === 'image'" [src]="src + lecture.content" alt="lecture-image" >
 </div>

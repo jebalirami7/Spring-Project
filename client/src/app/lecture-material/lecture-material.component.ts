@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LectureService } from '../services/lecture.service';
 import { LectureDTO } from '../models/DTO/LectureDTO';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-lecture-material',
@@ -9,6 +10,7 @@ import { LectureDTO } from '../models/DTO/LectureDTO';
 })
 export class LectureMaterialComponent implements OnInit{
 
+  src : string = `${environment.apiURL}/uploads/`
   lecture: LectureDTO = 
     {
       id: 1,
