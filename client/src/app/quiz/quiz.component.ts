@@ -9,7 +9,7 @@ import { QuizService } from "../services/quiz.service";
 })
 export class QuizComponent implements OnInit {
   questions: String[] = [];
-  options: String[][] = [[]];
+  options: any[] = [];
   selectedOptions: number[] = [];
   currentIndex: number = 0;
   currentQuestion: any;
@@ -21,26 +21,18 @@ export class QuizComponent implements OnInit {
   constructor(private router: Router, private quizService: QuizService) {}
 
   ngOnInit(): void {
-    // this.questions = [
-    //   'Question 1?',
-    //   'Question 2?',
-    //   'Question 3?'
-    // ];
-
-    // this.options = [
-    //   ["1", "2", "3"],
-    //   ["1", "2", "3"],
-    //   ["1", "2", "3"]
-    // ];
-
     this.loadQuiz();
   }
 
   loadQuiz() {
-    this.quizService.getQuiz(2).subscribe({
+    this.quizService.getQuiz(1).subscribe({
       next: (res) => {
-        this.questions = res.questions;
-        this.options = res.options;
+        for (let i = 0; i < res.questions.length; i++) {
+          this.questions.push(res.questions[i].question);
+          this.options.push(res.questions[i].options);
+        }
+        console.log(this.options);
+                
         this.loadQuestion();
       },
       error: (err) => {
