@@ -1,0 +1,22 @@
+<div class="course-sidebar">
+  <ul class="chapters-list">
+      <li class="list-header">
+        <h2 >Course Chapters</h2>  
+      </li>
+      <li class="chapter-container" *ngFor="let chapter of chapters; index as i ;">
+        <div class="chapter-header" (click)="toggleChapter(chapter)">
+          <div class="title">
+            {{"Chapter " + i + " : "}}{{ chapter.title }}
+          </div>
+          <i  *ngIf="!chapter.expanded"  class="fa-solid fa-chevron-down"></i>
+          <i  *ngIf="chapter.expanded" class="fa-solid fa-chevron-up"></i>
+        </div>
+        <ul *ngIf="chapter.expanded">
+          <li *ngFor="let material of chapter.courseMaterials">
+            <span (click)="openMaterial(material.id)">{{ material.title }}</span>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  
