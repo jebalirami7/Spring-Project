@@ -1,3 +1,4 @@
+import { Quizz } from "./quizz";
 import { Tutor } from "./tutor";
 
 export interface Course {
@@ -7,4 +8,5 @@ export interface Course {
     imagePath: string;
     creator: Tutor;
     subject: any;
+    quizz: Quizz;
 }

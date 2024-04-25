@@ -1,0 +1,60 @@
+@import url('https://use.fontawesome.com/releases/v6.0.0-beta2/css/all.css');
+
+
+
+.list-header {
+  background-color: #white;
+  font-size: 1.5em;
+  padding-left: 10px;
+
+}
+
+.chapters-list {
+  padding: 0;
+  margin: 0;
+
+}
+
+.course-sidebar {
+  width: 350px;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #f7f9fa;
+}
+
+.course-sidebar ul {
+  list-style-type: none;
+  
+}
+
+
+
+.course-sidebar li:first-child {
+  list-style-type: none;
+  border-bottom: none ;
+}
+
+.chapter-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  list-style-type: none;
+  border-bottom: 1px solid #dfe4e7;
+}
+
+
+
+.chapter-header  {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 10px; 
+  align-items: center;
+  padding-left: 20px;
+  font-size: 1.2em;
+}
+
+.fa-chevron-down, .fa-chevron-up{
+  color: blue;
+  font-size: 18px;
+}

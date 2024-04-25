@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,13 +15,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class CourseMaterial {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String question;
-    private String[] reponses;
+    private String title;
+    private String content;
+    private String type;
 
     @ManyToOne
     @JoinColumn(name = "chapter_id")

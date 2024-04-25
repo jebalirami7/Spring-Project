@@ -14,7 +14,7 @@
   <div class="courses">
     <h3>Joined Courses</h3>
     <div class="course-grid">
-      <div class="course" *ngFor="let course of courses">
+      <div class="course" *ngFor="let course of courses" (click)="goToCourse(course.id)" >
         <div class="course-picture">
           <img [src]="course.imagePath" alt="" />
         </div>
@@ -22,6 +22,7 @@
           <h4>{{ course.name }}</h4>
           <p class="tutor">{{ course.creator.firstName + " " + course.creator.lastName}}</p>
           <p class="rate">Rate: ★★★★☆</p>
+          <button class="btn btn-primary" (click)="goToQuiz(course.quizz.id)">Quiz</button>
         </div>
       </div>
     </div>

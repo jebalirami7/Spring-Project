@@ -23,7 +23,7 @@ public class Chapter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
+    private String title;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "course_id", referencedColumnName = "id")
@@ -32,7 +32,7 @@ public class Chapter {
     @OneToMany(mappedBy = "chapter")
     private List<CourseMaterial> courseMaterials;
 
-    @OneToMany(mappedBy = "chapter")
-    private List<Quizz> quizzs;
+    // @OneToMany(mappedBy = "chapter")
+    // private List<Quizz> quizzes;
 
 }

@@ -7,6 +7,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard, loginGuard } from './auth.guard';
 import { CoursesComponent } from './courses/courses.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { CourseSidebarComponent } from './course-sidebar/course-sidebar.component';
+import { CourseComponent } from './course/course.component';
 import { QuizComponent } from './quiz/quiz.component';
 
 const routes: Routes = [
@@ -51,7 +53,12 @@ const routes: Routes = [
     canActivate : [authGuard],
   },
   {
-    path: 'quiz',
+    path: 'course/:id',
+    component: CourseComponent,
+    title: 'Course Details'
+  },
+  {
+    path: 'quiz/:id',
     component: QuizComponent,
     title: 'Quiz',
     canActivate : [authGuard],

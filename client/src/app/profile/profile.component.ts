@@ -28,9 +28,10 @@ export class ProfileComponent implements OnInit {
   }
 
   loadCourses() {
-    this.coursesService.getCoursesByStudent(2).subscribe({
+    this.coursesService.getCoursesByStudent(this.currentUser.id).subscribe({
       next: res => {
         this.courses = res;
+        
       }, error: (err: HttpErrorResponse) => {
         if (err.status === 401) {
           this.auth.logout();
@@ -38,5 +39,13 @@ export class ProfileComponent implements OnInit {
         }
       }
     });
+  }
+
+  goToCourse(id: number) {
+    this.router.navigate(['/course/' + id]);
+  }
+
+  goToQuiz(id: number) {
+    this.router.navigate(['/quiz/' + id]); 
   }
 }
