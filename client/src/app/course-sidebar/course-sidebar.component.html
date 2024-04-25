@@ -6,7 +6,7 @@
       <li class="chapter-container" *ngFor="let chapter of chapters; index as i ;">
         <div class="chapter-header" (click)="toggleChapter(chapter)">
           <div class="title">
-            {{"Chapter " + i + " : "}}{{ chapter.title }}
+            {{"Chapter " + (i + 1) + " : "}}{{ chapter.title }}
           </div>
           <i  *ngIf="!chapter.expanded"  class="fa-solid fa-chevron-down"></i>
           <i  *ngIf="chapter.expanded" class="fa-solid fa-chevron-up"></i>

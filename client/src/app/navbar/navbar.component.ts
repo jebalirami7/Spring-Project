@@ -10,11 +10,14 @@ import { AuthService } from '../services/auth.service';
 export class NavbarComponent {
 
   isLoggedIn: boolean = false;
+  currentUser: any;
 
   constructor( private authService: AuthService, private router: Router) {}
   
   ngOnInit() {
     this.isLoggedIn = this.authService.isLoggedIn();
+    if (this.isLoggedIn)
+      this.currentUser = this.authService.currentUser();
   }
 
   onLogout() {

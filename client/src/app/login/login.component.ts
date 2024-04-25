@@ -78,26 +78,21 @@ export class LoginComponent {
         password: password
       }
 
-       this.auth.login(credentials).subscribe({
-         next: (result) => {  
+      this.auth.login(credentials).subscribe({
+        next: (result) => {  
           this.auth.setToken(result.token);
           this.router.navigate(['/']);
-         },
-         error: (err) => {
+        },
+        error: (err) => {
           this.loginError = "Erreur d'authentification";
         },
-       });
+      });
     } else {
       this.loginError = 'Please enter valid credentials';
     }
   }
 
   toggleForm() {
-    // if (this.isLoginFormActive) {
-    //   this.router.navigate(['/register']);
-    // } else {
-    //   this.router.navigate(['/login']);
-    // }
     this.isLoginFormActive = !this.isLoginFormActive;
   }
 }

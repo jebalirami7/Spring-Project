@@ -10,7 +10,7 @@
       <div class="options" *ngFor="let option of options[currentIndex]; let i = index">
         <input type="radio" id="{{ 'option-' + i }}" name="answer" 
                (change)="selectOption(i)" [checked]="selectedOptions[currentIndex] === i">
-        <label for="{{ 'option-' + i }}">{{ option }}</label>
+        <label for="{{ 'option-' + i }}">{{ option.option }}</label>
       </div>
     </div>
     <!-- Navigation Buttons -->

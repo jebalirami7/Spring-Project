@@ -26,6 +26,7 @@ public class User {
     private Long id;
     private String firstName;
     private String lastName;
+    private String imagePath = "../../assets/images/man3.jpg";
 
     @Column(nullable = false, unique = true)
     private String email;

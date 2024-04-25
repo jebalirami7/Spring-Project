@@ -22,6 +22,7 @@ import { AuthService } from './services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { CoursesComponent } from './courses/courses.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { CourseSidebarComponent } from './course-sidebar/course-sidebar.component';
 import { CourseComponent } from './course/course.component';
 import { LectureMaterialComponent } from './lecture-material/lecture-material.component';
@@ -44,6 +45,7 @@ import { QuizComponent } from './quiz/quiz.component';
     ProvidedServicesComponent,
     SearchComponent,
     CoursesComponent,
+    EditProfileComponent,
     CourseSidebarComponent,
     CourseComponent,
     LectureMaterialComponent,

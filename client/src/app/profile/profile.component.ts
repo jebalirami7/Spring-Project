@@ -12,19 +12,26 @@ import { Course } from "../entities/course";
 })
 export class ProfileComponent implements OnInit {
   courses: Course[];
+  isLoggedIn: boolean = false;
+  currentUser: any;
 
   constructor(private coursesService: CoursesService, private auth: AuthService, private router: Router) {
     this.courses = [];
   }
 
   ngOnInit() {
-    this.loadReclamation();
+    this.isLoggedIn = this.auth.isLoggedIn();
+    if (this.isLoggedIn)
+      this.currentUser = this.auth.currentUser();
+    
+    this.loadCourses();
   }
 
-  loadReclamation() {
-    this.coursesService.getCoursesByStudent(3).subscribe({
+  loadCourses() {
+    this.coursesService.getCoursesByStudent(this.currentUser.id).subscribe({
       next: res => {
         this.courses = res;
+        
       }, error: (err: HttpErrorResponse) => {
         if (err.status === 401) {
           this.auth.logout();
@@ -32,5 +39,13 @@ export class ProfileComponent implements OnInit {
         }
       }
     });
+  }
+
+  goToCourse(id: number) {
+    this.router.navigate(['/course/' + id]);
+  }
+
+  goToQuiz(id: number) {
+    this.router.navigate(['/quiz/' + id]); 
   }
 }

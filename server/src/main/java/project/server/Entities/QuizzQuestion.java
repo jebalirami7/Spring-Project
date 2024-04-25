@@ -10,8 +10,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,18 +21,20 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Quizz {
-
+public class QuizzQuestion {
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String question;
 
-    @OneToMany(mappedBy = "quizz", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<QuizzQuestion> questions;
-
-    @OneToOne(mappedBy = "quizz")
+    @ManyToOne
+    @JoinColumn(name = "quizz_id")
     @JsonBackReference
-    private Course course;
+    private Quizz quizz;
+
+    @OneToMany(mappedBy = "quizzQuestion", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<QuizzOption> options;
 
 }

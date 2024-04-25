@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LectureService } from '../services/lecture.service';
-import { LectureDTO } from '../models/DTO/LectureDTO';
+import { LectureDTO } from '../entities/DTO/LectureDTO';
 import { environment } from '../../environments/environment';
 
 @Component({

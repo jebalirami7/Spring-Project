@@ -1,4 +1,4 @@
-package project.server.config;
+package project.server.Config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

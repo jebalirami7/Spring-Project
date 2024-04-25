@@ -26,7 +26,9 @@ export class CoursesService {
     return this.http.get<any>(`${environment.apiURL}/course/${id}`);
   }
 
-  
+  joinCourse(courseId: number, studentId: number): Observable<any> {
+    return this.http.put<any>(`${environment.apiURL}/course/${courseId}/student/${studentId}`, {});
+  }
 
 
 }

@@ -6,7 +6,9 @@ import project.server.Services.JwtService;
 import project.server.Services.UserService;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,28 +40,39 @@ public class UserController {
         return "Welcome this endpoint is not secure";
     }
 
-    @PostMapping("/")
+    @PostMapping
     public User addNewUser(@RequestBody User userInfo) {
         return service.addUser(userInfo);
     }
 
-    @GetMapping("/user/{id}/profile")
-    public String userProfile(@PathVariable("id") int id){
-        return "Welcome to User Profile" + id  ;
+    @GetMapping
+    public List<User> getAllUsers() {
+        return service.getAllUsers();
     }
 
+    @GetMapping("/{id}")
+    public Optional<User> getUser(@PathVariable("id") Long id) {
+        return service.getUser(id);
+    }
 
     @PostMapping("/login")
     public Map<String, String> authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
         if (authentication.isAuthenticated()) {
-            String token = jwtService.generateToken(authRequest.getUsername());
+            User user = service.getUserByUsername(authRequest.getUsername());
+            String token = jwtService.generateToken(user, authRequest.getUsername());
             Map<String, String> response = new HashMap<>();
             response.put("token", token);
             return response;
         } else {
             throw new UsernameNotFoundException("Invalid user request!");
         }
+    }
+
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable("id") Long id, @RequestBody User user) {
+        return service.updateUser(id, user);
     }
 
     @PostMapping("/refresh-token")
@@ -79,9 +92,9 @@ public class UserController {
         
         if (username != null && refreshToken != null ) {
             UserDetails userDetails = service.loadUserByUsername(username);
-            
+            User user = service.getUserByUsername(username);
             if (jwtService.validateToken(refreshToken, userDetails)) {
-                String newAccessToken = jwtService.generateToken(userDetails.getUsername());
+                String newAccessToken = jwtService.generateToken(user, userDetails.getUsername());
                 Map<String, String> response = new HashMap<>();
                 response.put("token", newAccessToken);
                 

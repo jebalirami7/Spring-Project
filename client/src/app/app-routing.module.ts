@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard, loginGuard } from './auth.guard';
 import { CoursesComponent } from './courses/courses.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { CourseSidebarComponent } from './course-sidebar/course-sidebar.component';
 import { CourseComponent } from './course/course.component';
 import { QuizComponent } from './quiz/quiz.component';
@@ -19,19 +20,19 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    title: 'sign in',
+    title: 'Sign In',
     canActivate: [loginGuard],
   },
   {
     path: 'register',
     component: LoginComponent,
-    title: 'sign up',
+    title: 'Sign Up',
     canActivate: [loginGuard],
   },
   {
     path: 'myprofile',
     component: ProfileComponent,
-    title: 'myprofile',
+    title: 'My Profile',
     canActivate: [authGuard],
   },
   {
@@ -46,14 +47,21 @@ const routes: Routes = [
     title: 'Courses Available'
   },
   {
+    path:'myprofile/edit',
+    component: EditProfileComponent,
+    title: 'Edit Profile',
+    canActivate : [authGuard],
+  },
+  {
     path: 'course/:id',
     component: CourseComponent,
     title: 'Course Details'
   },
   {
-    path: 'quiz',
-    component: QuizComponent, // Route for the quiz page
-    title: 'Quiz'
+    path: 'quiz/:id',
+    component: QuizComponent,
+    title: 'Quiz',
+    canActivate : [authGuard],
   },
 ];
 

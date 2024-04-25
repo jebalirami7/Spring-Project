@@ -23,14 +23,14 @@ import project.server.Services.CourseMaterialService;
 import project.server.Services.StorageService;
 
 @RestController
-@RequestMapping(path = "/lecture/")
+@RequestMapping(path = "/lecture")
 public class CourseMaterialController {
 
     @Autowired
-    private  CourseMaterialService courseMaterialService;
+    private CourseMaterialService courseMaterialService;
     @Autowired
     private StorageService storageService;
-    
+
     @GetMapping
     public ResponseEntity<List<CourseMaterialDto>> getAllCourseMaterials() {
         List<CourseMaterialDto> materials = courseMaterialService.getAllCourseMaterials();
@@ -46,32 +46,24 @@ public class CourseMaterialController {
         return ResponseEntity.notFound().build(); // 404
     }
 
-
     @PostMapping
     public ResponseEntity<CourseMaterialDto> createCourseMaterial(
-        @RequestParam("title") String title,
-        @RequestParam("content") String content,
-        @RequestParam("type") String type,
-        @RequestParam("chapterId") int chapterId,
-        @RequestParam("file") MultipartFile file )
-     {
-        if ( type.equals("image") && file !=null && !file.isEmpty()) {
-            storageService.store(file);
-            content = file.getOriginalFilename();
+            @RequestParam("title") String title,
+            @RequestParam("content") String content,
+            @RequestParam("type") String type,
+            @RequestParam("chapterId") int chapterId,
+            @RequestParam("file") MultipartFile file) {
+        if (type.equals("image") && file != null && !file.isEmpty()) {
+            String fileName = storageService.store(file);
+            content = fileName;
         }
 
-
         CourseMaterialDto material = courseMaterialService.createCourseMaterial(title, content, type, chapterId);
-        if ( material != null) {
+        if (material != null) {
             return ResponseEntity.ok(material);
         }
         return ResponseEntity.notFound().build();
     }
-
-
-
-
-
 
     @PutMapping("/{id}")
     public ResponseEntity<CourseMaterial> updateCourse(@PathVariable int id, @RequestBody CourseMaterial course) {
@@ -86,9 +78,7 @@ public class CourseMaterialController {
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)
-	public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
-		return ResponseEntity.notFound().build();
-	}
+    public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
+        return ResponseEntity.notFound().build();
+    }
 }
-
-

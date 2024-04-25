@@ -1,4 +1,4 @@
-package project.server.filters;
+package project.server.Filters;
 
 import project.server.Services.JwtService;
 import jakarta.servlet.FilterChain;

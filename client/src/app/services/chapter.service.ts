@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { ChapterDTO } from '../models/DTO/ChapterDTO';
-import { Chapter } from '../models/Chapter';
+import { ChapterDTO } from '../entities/DTO/ChapterDTO';
+import { Chapter } from '../entities/Chapter';
 import { Observable } from 'rxjs';
 
 @Injectable({

@@ -12,7 +12,7 @@ import project.server.Services.ChapterService;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/chapter/")
+@RequestMapping(path = "/chapter")
 public class ChapterController {
 
     @Autowired

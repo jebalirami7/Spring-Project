@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 
 import project.server.Services.StorageService;
-import project.server.config.StorageConfiguration;
+import project.server.Config.StorageConfiguration;
 
 
 @SpringBootApplication

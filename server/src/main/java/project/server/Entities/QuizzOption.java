@@ -1,15 +1,13 @@
 package project.server.Entities;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,21 +16,17 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Chapter {
-
+public class QuizzOption {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String title;
+    private String option;
+    private boolean correct;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "course_id", referencedColumnName = "id")
-    private Course course;
-
-    @OneToMany(mappedBy = "chapter")
-    private List<CourseMaterial> courseMaterials;
-
-    // @OneToMany(mappedBy = "chapter")
-    // private List<Quizz> quizzes;
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    @JsonBackReference
+    private QuizzQuestion quizzQuestion;
 
 }

@@ -12,19 +12,34 @@ import { Course } from "../entities/course";
 })
 export class CoursesComponent implements OnInit {
   courses: Course[];
+  currentUser: any;
 
   constructor(private coursesService: CoursesService, private auth: AuthService, private router: Router) {
     this.courses = [];
   }
 
   ngOnInit() {
-    this.loadReclamation();
+    this.currentUser = this.auth.currentUser();
+    this.loadCourses();
   }
 
-  loadReclamation() {
+  loadCourses() {
     this.coursesService.getAllCourses().subscribe({
       next: res => {
         this.courses = res;
+      }, error: (err: HttpErrorResponse) => {
+        if (err.status === 401) {
+          this.auth.logout();
+          this.router.navigate(['/']);
+        }
+      }
+    });
+  }
+
+  joinCourse(id: number) {
+    this.coursesService.joinCourse(id, this.currentUser.id).subscribe({
+      next: res => {
+        this.router.navigate(['/myprofile']);
       }, error: (err: HttpErrorResponse) => {
         if (err.status === 401) {
           this.auth.logout();
