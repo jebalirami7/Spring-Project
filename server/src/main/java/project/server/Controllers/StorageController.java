@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.RestController;
 
 import project.server.Exceptions.StorageFileNotFoundException;
-import project.server.Services.StorageService;
 import project.server.Services.Implementations.StorageServiceImpl;
 
 import org.springframework.web.bind.annotation.RequestMapping;

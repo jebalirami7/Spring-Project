@@ -29,9 +29,14 @@ public class CourseMaterialService {
         return CourseMaterialMapper.convertToDto(courseMaterialRepo.findById(id).orElse(null));
     }
 
-    public CourseMaterialDto createCourseMaterial(CourseMaterialDto material) {
-        CourseMaterial newMaterial = CourseMaterialMapper.convertToEntity(material);
-        Chapter chapter = chapterRepo.findById(material.getChapterId()).orElse(null);
+    public CourseMaterialDto createCourseMaterial(String title, String content, String type, int chapterId) {
+        CourseMaterial newMaterial = CourseMaterial.builder()
+        .title(title)
+        .content(content)
+        .type(type)
+        .build();
+        
+        Chapter chapter = chapterRepo.findById(chapterId).orElse(null);
         if ( chapter != null) {
             newMaterial.setChapter(chapter);
             return CourseMaterialMapper.convertToDto(courseMaterialRepo.save(newMaterial));
