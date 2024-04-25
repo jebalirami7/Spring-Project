@@ -2,6 +2,8 @@ package project.server.Entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,9 +26,11 @@ public class Subject {
     private String name;
     private String description;    
 
+    @JsonIgnore
     @OneToMany(mappedBy = "subject")
     private List<Course> courses;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "subjects")
     private List<Section> sections;
 

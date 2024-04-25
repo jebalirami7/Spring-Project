@@ -25,6 +25,8 @@ import { CoursesComponent } from './courses/courses.component';
 import { CourseSidebarComponent } from './course-sidebar/course-sidebar.component';
 import { CourseComponent } from './course/course.component';
 import { LectureMaterialComponent } from './lecture-material/lecture-material.component';
+import { QuizComponent } from './quiz/quiz.component';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { LectureMaterialComponent } from './lecture-material/lecture-material.co
     CourseSidebarComponent,
     CourseComponent,
     LectureMaterialComponent,
+    QuizComponent,
   ],
   imports: [
     BrowserModule,

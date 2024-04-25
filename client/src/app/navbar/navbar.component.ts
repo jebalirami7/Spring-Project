@@ -11,10 +11,13 @@ export class NavbarComponent {
 
   isLoggedIn: boolean = false;
 
-  constructor( private authService: AuthService) {
-  }
-
+  constructor( private authService: AuthService, private router: Router) {}
+  
   ngOnInit() {
     this.isLoggedIn = this.authService.isLoggedIn();
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 }
