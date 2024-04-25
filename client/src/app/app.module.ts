@@ -22,6 +22,9 @@ import { AuthService } from './services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { CoursesComponent } from './courses/courses.component';
+import { CourseSidebarComponent } from './course-sidebar/course-sidebar.component';
+import { CourseComponent } from './course/course.component';
+import { LectureMaterialComponent } from './lecture-material/lecture-material.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { CoursesComponent } from './courses/courses.component';
     ProvidedServicesComponent,
     SearchComponent,
     CoursesComponent,
+    CourseSidebarComponent,
+    CourseComponent,
+    LectureMaterialComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,4 +13,11 @@ export class Courses {
     return this.http.post<any>(`${environment.apiURL}/course`, filter);
   }
 
+  getCourseById(id: String): Observable<any> {
+    return this.http.get<any>(`${environment.apiURL}/course/${id}`);
+  }
+
+  
+
+
 }

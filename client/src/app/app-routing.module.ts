@@ -6,6 +6,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard, loginGuard } from './auth.guard';
 import { CoursesComponent } from './courses/courses.component';
+import { CourseSidebarComponent } from './course-sidebar/course-sidebar.component';
+import { CourseComponent } from './course/course.component';
 
 const routes: Routes = [
   {
@@ -42,6 +44,11 @@ const routes: Routes = [
     component: CoursesComponent,
     title: 'Courses Available'
   },
+  {
+    path: 'course/:id',
+    component: CourseComponent,
+    title: 'Course Details'
+  }
 ];
 
 @NgModule({
