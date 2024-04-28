@@ -8,19 +8,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.io.Serializable;
 import jakarta.persistence.OneToMany;
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Section implements Serializable{
+public class Section {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,12 +28,8 @@ public class Section implements Serializable{
     @OneToMany(mappedBy = "section")
     private List<Student> students;
 
-    @ManyToMany
-    @JoinTable(
-        name = "section_subject",
-        joinColumns = @JoinColumn(name = "section_id"),
-        inverseJoinColumns = @JoinColumn(name = "subject_id")
-    )
-    private List<Subject> subjects;
+    @JsonIgnore
+    @OneToMany(mappedBy = "section")
+    private List<Course> courses;
 
 }

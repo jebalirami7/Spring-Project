@@ -8,19 +8,24 @@ import { AuthService } from '../services/auth.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-
   isLoggedIn: boolean = false;
+  isTokenExpired: boolean = false;
   currentUser: any;
 
   constructor( private authService: AuthService, private router: Router) {}
   
   ngOnInit() {
+    this.isTokenExpired = this.authService.checkTokenExpiration();
+    if (this.isTokenExpired) {
+      this.authService.logout();
+    }
     this.isLoggedIn = this.authService.isLoggedIn();
-    if (this.isLoggedIn)
+    if (this.isLoggedIn) {
       this.currentUser = this.authService.currentUser();
+    }
   }
 
-  onLogout() {
+  logout() {
     this.authService.logout();
   }
 }

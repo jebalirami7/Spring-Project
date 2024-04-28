@@ -23,7 +23,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String firstName;
     private String lastName;
     private String imagePath = "../../assets/images/man3.jpg";

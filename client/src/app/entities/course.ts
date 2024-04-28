@@ -9,4 +9,7 @@ export interface Course {
     creator: Tutor;
     subject: any;
     quizz: Quizz;
+    rating: number;   
+    duration: number; 
+    isJoined: boolean;
 }

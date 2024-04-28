@@ -27,7 +27,7 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
-    public Optional<User> getUser(Long id) {
+    public Optional<User> getUser(int id) {
         Optional<User> user = repository.findById(id);
         user.ifPresent(value -> value.setPassword(null));
         return user;
@@ -37,7 +37,7 @@ public class UserService implements UserDetailsService {
         return repository.findAll();
     }
 
-    public User updateUser(Long id, User user) {
+    public User updateUser(int id, User user) {
         User userToUpdate = repository.findById(id).orElse(null);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if (userToUpdate != null) {
@@ -47,7 +47,7 @@ public class UserService implements UserDetailsService {
                 userToUpdate.setLastName(user.getLastName());
             if (user.getImagePath() != null)
                 userToUpdate.setImagePath(user.getImagePath());
-            if (user.getPassword() != null)
+            if (user.getPassword() != "")
                 userToUpdate.setPassword(encoder.encode(user.getPassword()));
             repository.save(userToUpdate); 
             userToUpdate.setPassword(null);
@@ -56,7 +56,7 @@ public class UserService implements UserDetailsService {
         return null;
     }
 
-    public void deleteUser(Long id) {
+    public void deleteUser(int id) {
         repository.deleteById(id);
     }
 

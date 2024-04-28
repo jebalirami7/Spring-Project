@@ -7,4 +7,8 @@ import project.server.Entities.StudentCourse;
 @Repository
 public interface StudentCourseRepo extends JpaRepository<StudentCourse, Integer> {
 
+    public boolean existsByCourseIdAndStudentId(int courseId, int studentId);
+
+    public int countByCourseId(int courseId);
+
 }

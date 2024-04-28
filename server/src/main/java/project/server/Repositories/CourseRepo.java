@@ -12,11 +12,15 @@ import project.server.Entities.Tutor;
 @Repository
 public interface CourseRepo extends JpaRepository<Course, Integer> {
 
-    List<Course> findBySubjectName(String subjectName);
+    List<Course> findByNameContainingIgnoreCase(String courseName);
+
+    List<Course> findBySectionNameIgnoreCase(String sectionName);
 
     List<Course> findByCreator(Tutor creator);
 
     @Query("SELECT c FROM Course c JOIN c.userCourses uc WHERE uc.student = :student")
     List<Course> findByStudent(Student student);
+
+    List<Course> findTop3ByOrderByRatingDesc();
 
 }

@@ -31,9 +31,10 @@ public class Course {
     private String description;  
     private String imagePath = "../../assets/images/woman2.jpg";
     private float rating;
+    private float duration;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "creator_id", referencedColumnName = "id")
+    @JoinColumn(name = "creator_id")
     private Tutor creator;
 
     @JsonIgnore
@@ -45,8 +46,8 @@ public class Course {
     private List<StudentCourse> userCourses;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "subject_id", referencedColumnName = "id")
-    private Subject subject;
+    @JoinColumn(name = "section_id")
+    private Section section;
 
     @JsonIgnore
     @OneToMany(mappedBy = "course")

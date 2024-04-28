@@ -12,7 +12,8 @@
     </div>
   </div>
   <div class="courses">
-    <h3>Joined Courses</h3>
+    <h3 *ngIf="currentUser.role === 'student'" >Joined Courses</h3>
+    <h3 *ngIf="currentUser.role === 'tutor'" >Created Courses</h3>
     <div class="course-grid">
       <div class="course" *ngFor="let course of courses" (click)="goToCourse(course.id)" >
         <div class="course-picture">
@@ -21,7 +22,12 @@
         <div class="course-details">
           <h4>{{ course.name }}</h4>
           <p class="tutor">{{ course.creator.firstName + " " + course.creator.lastName}}</p>
-          <p class="rate">Rate: ★★★★☆</p>
+          <div class="mb-3">
+            <span class="rate">Rate: </span>
+            <small class="fa fa-star " *ngFor="let item of [].constructor(getNonDecimalRating(course.rating)); let i = index"></small>
+            <small class="fa fa-star" [style]="{'clip-path': 'rect(0% 0% 100% ' + (getDecimalRating(course.rating) * 100) + '%)'}"> </small>
+            <small class="rating">{{ getDecimalRating(course.rating) + getNonDecimalRating(course.rating) }}</small>
+          </div>
           <button class="btn btn-primary" (click)="goToQuiz(course.quizz.id)">Quiz</button>
         </div>
       </div>

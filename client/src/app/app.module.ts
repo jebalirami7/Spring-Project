@@ -16,7 +16,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PopularCoursesComponent } from './popular-courses/popular-courses.component';
 import { ProfileComponent } from './profile/profile.component';
 import { InstructorsComponent } from './instructors/instructors.component';
-import { ProvidedServicesComponent } from './provided-services/provided-services.component';
+import { About } from './about/about.component';
 import { SearchComponent } from './search/search.component';
 import { AuthService } from './services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -42,7 +42,7 @@ import { QuizComponent } from './quiz/quiz.component';
     PopularCoursesComponent,
     ProfileComponent,
     InstructorsComponent,
-    ProvidedServicesComponent,
+    About,
     SearchComponent,
     CoursesComponent,
     EditProfileComponent,

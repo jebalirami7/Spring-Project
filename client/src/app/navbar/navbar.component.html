@@ -11,7 +11,7 @@
             <a routerLink="/" class="nav-item nav-link" routerLinkActive="active">About</a>
             <a routerLink="/courses" class="nav-item nav-link" routerLinkActive="active">Courses</a>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Filieres</a>
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sections</a>
                 <div class="dropdown-menu fade-down m-0">
                     <a routerLink="/" class="dropdown-item" routerLinkActive="active">Informatique</a>
                     <a routerLink="/" class="dropdown-item" routerLinkActive="active">Infotronique</a>
@@ -35,7 +35,7 @@
                 <div class="dropdown-menu fade-down m-0">
                   <a routerLink="/myprofile" class="dropdown-item" routerLinkActive="active">My Profile</a>
                   <a routerLink="/" class="dropdown-item" routerLinkActive="active">My Courses</a>
-                  <a routerLink="/login" class="dropdown-item" routerLinkActive="active" (click)="onLogout()">Logout</a>
+                  <a routerLink="/login" class="dropdown-item" routerLinkActive="active" (click)="logout()">Logout</a>
                 </div>
             </div>
           </div>

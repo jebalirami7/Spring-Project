@@ -12,7 +12,6 @@ import { Course } from "../entities/course";
 })
 export class ProfileComponent implements OnInit {
   courses: Course[];
-  isLoggedIn: boolean = false;
   currentUser: any;
 
   constructor(private coursesService: CoursesService, private auth: AuthService, private router: Router) {
@@ -20,25 +19,48 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isLoggedIn = this.auth.isLoggedIn();
-    if (this.isLoggedIn)
-      this.currentUser = this.auth.currentUser();
-    
+    this.currentUser = this.auth.currentUser();
+    this.refreshUser();
     this.loadCourses();
   }
 
-  loadCourses() {
-    this.coursesService.getCoursesByStudent(this.currentUser.id).subscribe({
-      next: res => {
-        this.courses = res;
-        
-      }, error: (err: HttpErrorResponse) => {
-        if (err.status === 401) {
-          this.auth.logout();
-          this.router.navigate(['/']);
-        }
-      }
+  refreshUser() {
+    this.auth.refreshToken().subscribe({
+      next: (result) => {
+        this.auth.setToken(result.token);
+        this.currentUser = this.auth.currentUser(result.token);
+      },
+      error: (err) => {
+        this.auth.logout();
+        this.router.navigate(['/login']);
+      },
     });
+  }
+
+  loadCourses() {
+    if (this.currentUser.role === 'student') {
+      this.coursesService.getCoursesByStudent(this.currentUser.id).subscribe({
+        next: res => {
+          this.courses = res;
+        }, error: (err: HttpErrorResponse) => {
+          if (err.status === 401) {
+            this.auth.logout();
+            this.router.navigate(['/']);
+          }
+        }
+      });
+    } else if (this.currentUser.role === 'tutor') {
+      this.coursesService.getCoursesByTutor(this.currentUser.id).subscribe({
+        next: res => {
+          this.courses = res;
+        }, error: (err: HttpErrorResponse) => {
+          if (err.status === 401) {
+            this.auth.logout();
+            this.router.navigate(['/']);
+          }
+        }
+      });
+    }
   }
 
   goToCourse(id: number) {
@@ -47,5 +69,14 @@ export class ProfileComponent implements OnInit {
 
   goToQuiz(id: number) {
     this.router.navigate(['/quiz/' + id]); 
+  }
+
+  getNonDecimalRating(rating: number): number {
+    return Math.floor(rating);
+  }
+
+  getDecimalRating(rating: number): number {
+    const res = rating - Math.floor(rating);
+    return res;
   }
 }
