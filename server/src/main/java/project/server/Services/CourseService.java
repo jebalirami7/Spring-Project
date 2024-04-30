@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
+import lombok.AllArgsConstructor;
 import project.server.Entities.Course;
 import project.server.Entities.Student;
 import project.server.Entities.StudentCourse;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class CourseService {
 
     @Autowired
