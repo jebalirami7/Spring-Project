@@ -164,3 +164,56 @@ h1 {
   align-items: stretch;
   width: 100%;
 }
+
+.course-img {
+  width: 80px;
+  border-radius: 10%;
+}
+
+.dropdown-toggle::after {
+  font-family: "Montserrat";
+  font-weight: 900;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+@media (min-width: 992px) {
+  .nav-item .dropdown-menu {
+    width: 100%;
+    display: block;
+    margin-top: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+    right: 0;
+  }
+
+  .dropdown-menu.fade-down {
+    top: 100%;
+    transform: rotateX(-75deg);
+    transform-origin: 0% 0%;
+  }
+
+  .nav-item:hover .dropdown-menu {
+    top: 100%;
+    transform: rotateX(0deg);
+    visibility: visible;
+    transition: 0.5s;
+    opacity: 1;
+  }
+}
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #ffffff;
+  color: #181d38;
+}
+.dropdown-item:hover {
+  background-color: rgb(231, 229, 229);
+}
+#dropdown {
+  position: absolute;
+  width: 100%;
+  max-height: 215px;
+  overflow-y: auto;
+}

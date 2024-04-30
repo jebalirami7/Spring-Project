@@ -3,13 +3,20 @@
     <div class="container text-center my-5 py-5">
         <h1 class="text-white mt-4 mb-4">Learn From Home</h1>
         <h1 class="text-white display-1 mb-5">Education Courses</h1>
-        <div class="mx-auto mb-5" style="width: 100%; max-width: 600px;">
+        <div class="mx-auto mb-5" style="width: 100%; max-width: 600px; position: relative;">
             <div class="input-group">
-                
-                <input type="text" class="form-control border-light" style="padding: 30px 25px;" placeholder="Enter Your Course..">
-                <div class="input-group-append">
+                <input type="text" class="form-control border-light" style="padding: 30px 25px;" placeholder="Enter Your Course.." [(ngModel)]="keyWord" (ngModelChange)="loadCourses()">
+                <!-- <div class="input-group-append">
                     <button class="btn btn-secondary px-4 px-lg-5">Search</button>
-                </div>
+                </div> -->
+            </div>
+            <div class="fade-down m-0" id="dropdown" *ngIf="keyWord !== ''">
+                <a [routerLink]="'/course/' + course.id" class="dropdown-item" routerLinkActive="active" *ngFor="let course of courses" >
+                    <div>
+                        <img [src]="course.imagePath" alt="course-img" class="course-img">
+                        {{ course.name }}
+                    </div>
+                </a>
             </div>
         </div>
     </div>

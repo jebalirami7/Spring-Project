@@ -12,21 +12,26 @@ import { Course } from "../entities/course";
 })
 export class CoursesComponent implements OnInit {
   courses: Course[];
+  courseIds: number[];
   currentUser: any;
+  filter: string = 'All';
 
   constructor(private coursesService: CoursesService, private auth: AuthService, private router: Router) {
     this.courses = [];
+    this.courseIds = [];
   }
 
   ngOnInit() {
     this.currentUser = this.auth.currentUser();
-    this.loadCourses();
+    this.loadCourses(this.filter);
   }
 
-  loadCourses() {
-    this.coursesService.getAllCourses().subscribe({
+  loadCourses(filter: string) {
+    this.coursesService.getAllCourses(filter).subscribe({
       next: res => {
         this.courses = res;
+        this.courseIds = this.courses.map(course => course.id);
+        this.isJoined();    
       }, error: (err: HttpErrorResponse) => {
         if (err.status === 401) {
           this.auth.logout();
@@ -34,18 +39,60 @@ export class CoursesComponent implements OnInit {
         }
       }
     });
+  }
+
+  isJoined() {
+    this.coursesService.isJoined(this.courseIds, this.currentUser.id).subscribe({
+      next: res => {
+        this.courseIds.forEach((courseId, i) => {
+          this.courses[i].isJoined = res[i].first;
+        });
+      }, error: (err: HttpErrorResponse) => {
+        if (err.status === 401) {
+          this.auth.logout();
+          this.router.navigate(['/']);
+        }
+      }
+    });
+  }
+
+  onFilterChange() {
+    this.loadCourses(this.filter);
   }
 
   joinCourse(id: number) {
-    this.coursesService.joinCourse(id, this.currentUser.id).subscribe({
-      next: res => {
-        this.router.navigate(['/myprofile']);
-      }, error: (err: HttpErrorResponse) => {
-        if (err.status === 401) {
-          this.auth.logout();
-          this.router.navigate(['/']);
+    if (this.currentUser === null) {
+      alert('You need to login to join a course');
+      this.router.navigate(['/login']);
+    } else {
+      this.coursesService.joinCourse(id, this.currentUser.id).subscribe({
+        next: res => {
+          this.router.navigate(['/myprofile']);
+        }, error: (err: HttpErrorResponse) => {
+          if (err.status === 401) {
+            this.auth.logout();
+            this.router.navigate(['/']);
+          }
         }
-      }
-    });
+      });
+    }
+  }
+
+  goToCourse(id: number, joined: boolean) {
+    if (joined)
+      this.router.navigate(['/course/' + id]);
+  }
+
+  goToQuiz(id: number) {
+    this.router.navigate(['/quiz/' + id]); 
+  }
+
+  getNonDecimalRating(rating: number): number {
+    return Math.floor(rating);
+  }
+
+  getDecimalRating(rating: number): number {
+    const res = rating - Math.floor(rating);
+    return res;
   }
 }

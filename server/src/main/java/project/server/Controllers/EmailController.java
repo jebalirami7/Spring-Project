@@ -1,5 +1,7 @@
 package project.server.Controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,17 +14,19 @@ import project.server.Services.Implementations.EmailSenderServiceImpl;
 @RequestMapping("/email")
 public class EmailController {
     
-    private final EmailSenderServiceImpl emailSenderService;
-    
-    public EmailController(EmailSenderServiceImpl emailSenderService) {
-        this.emailSenderService = emailSenderService;
-    }
+    @Autowired
+    private EmailSenderServiceImpl emailSenderService;
 
     @PostMapping("/sendEmail")
     public String sendEmail(@RequestBody EmailMessage emailMessage) {
         System.out.println(emailMessage);
         emailSenderService.sendEmail(emailMessage.getTo(), emailMessage.getSubject(), emailMessage.getMessage());
         return "Email sent successfully";
+    }
+
+    @PostMapping("/resetPassword/{email}")
+    public String resetPassword(@PathVariable String email) {
+        return emailSenderService.resetPassword(email);
     }
 
 }

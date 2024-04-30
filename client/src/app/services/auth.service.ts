@@ -32,13 +32,17 @@ export class AuthService {
     localStorage.setItem('token', token);
   }
 
+  refreshToken(): Observable<any> {
+    return this.http.post<any>(`${environment.apiURL}/user/refresh-token`, {});
+  }
+
   logout() {
     localStorage.removeItem('token');
   }
 
-  currentUser() {
+  currentUser(token: string = this.getToken()): any {
     const helper = new JwtHelperService();
-    const decoded= helper.decodeToken(this.getToken());
+    const decoded= helper.decodeToken(token);
     return decoded;
   }
 
@@ -48,5 +52,11 @@ export class AuthService {
 
   updateUser(id: number, data: User): Observable<User> {
     return this.http.put<User>(`${environment.apiURL}/user/${id}`, data);
+  }
+
+  checkTokenExpiration(): boolean {
+    const helper = new JwtHelperService();
+    const token = this.getToken();
+    return helper.isTokenExpired(token);
   }
 }

@@ -1,6 +1,7 @@
 package project.server.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Pair;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.server.Entities.Course;
@@ -15,6 +16,11 @@ public class CourseController {
 
     @Autowired
     private CourseService courseService;
+
+    @PostMapping
+    public Course createCourse(@RequestBody Course course) {
+        return courseService.createCourse(course);
+    }
 
     @GetMapping
     public ResponseEntity<List<Course>> getAllCourses() {
@@ -41,26 +47,36 @@ public class CourseController {
         return ResponseEntity.ok(courses);
     }
 
-    @PostMapping
-    public Course createCourse(@RequestBody Course course) {
-        return courseService.createCourse(course);
+    @GetMapping("/bySection/{sectionName}")
+    public ResponseEntity<List<Course>> getCoursesBySection(@PathVariable String sectionName) {
+        return ResponseEntity.ok(courseService.getCoursesBySection(sectionName));
     }
 
-    @PostMapping("/search")
-    public ResponseEntity<List<Course>> searchCourses(@RequestBody String subjectName) {
-        return ResponseEntity.ok(courseService.searchCourses(subjectName));
+    @GetMapping("/search/{courseName}")
+    public ResponseEntity<List<Course>> getCoursesBycourse(@PathVariable String courseName) {
+        return ResponseEntity.ok(courseService.getCoursesByName(courseName));
+    }
+
+    @GetMapping("/popular")
+    public ResponseEntity<List<Course>> getPopularCourses() {
+        return ResponseEntity.ok(courseService.getTop3Courses());
+    }
+
+    @PostMapping("/isJoined/{studentId}")
+    public ResponseEntity<List<Pair<Boolean, Integer>>> getJoinedCourses(@RequestBody List<Integer> courseIds, @PathVariable int studentId) {
+        return ResponseEntity.ok(courseService.existsByCourseIdsAndStudentId(courseIds, studentId));
+    }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCourse(@PathVariable int id) {
+        courseService.deleteCourse(id);
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Course> updateCourse(@PathVariable int id, @RequestBody Course course) {
         Course updatedCourse = courseService.updateCourse(id, course);
         return ResponseEntity.ok().body(updatedCourse);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCourse(@PathVariable int id) {
-        courseService.deleteCourse(id);
-        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{courseId}/student/{studentId}")

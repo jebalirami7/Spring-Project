@@ -26,7 +26,7 @@ public class Chapter {
     private String title;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "course_id", referencedColumnName = "id")
+    @JoinColumn(name = "course_id")
     private Course course;
 
     @OneToMany(mappedBy = "chapter")

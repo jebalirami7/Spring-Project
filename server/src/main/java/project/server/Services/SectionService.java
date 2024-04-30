@@ -34,7 +34,7 @@ public class SectionService {
             existingSection.setName(newSection.getName());
             existingSection.setNiveau(newSection.getNiveau());
             existingSection.setStudents(newSection.getStudents());
-            existingSection.setSubjects(newSection.getSubjects());
+            // existingSection.setSubjects(newSection.getSubjects());
             return sectionRepository.save(existingSection);
         }
         return null;

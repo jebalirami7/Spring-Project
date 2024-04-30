@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-provided-services',
-  templateUrl: './provided-services.component.html',
-  styleUrl: './provided-services.component.css',
+  selector: 'app-about',
+  templateUrl: './about.component.html',
+  styleUrl: './about.component.css',
 })
-export class ProvidedServicesComponent {
+export class About {
   services: any = [
     {
       name: 'Skilled Instructors',
