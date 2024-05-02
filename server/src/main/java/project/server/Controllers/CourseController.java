@@ -3,6 +3,7 @@ package project.server.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import project.server.Entities.Course;
 import project.server.Services.CourseService;
@@ -18,6 +19,7 @@ public class CourseController {
     private CourseService courseService;
 
     @PostMapping
+    //@PreAuthorize("hasRole('ROLE_TUTOR')")
     public Course createCourse(@RequestBody Course course) {
         return courseService.createCourse(course);
     }
@@ -68,12 +70,14 @@ public class CourseController {
     }
     
     @DeleteMapping("/{id}")
+    //@PreAuthorize("hasRole('ROLE_TUTOR')")
     public ResponseEntity<Void> deleteCourse(@PathVariable int id) {
         courseService.deleteCourse(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{id}")
+    //@PreAuthorize("hasRole('ROLE_TUTOR')")
     public ResponseEntity<Course> updateCourse(@PathVariable int id, @RequestBody Course course) {
         Course updatedCourse = courseService.updateCourse(id, course);
         return ResponseEntity.ok().body(updatedCourse);
