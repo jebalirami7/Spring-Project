@@ -26,6 +26,9 @@ public class UserService implements UserDetailsService {
         repository.save(user);
         return user;
     }
+    public User getUserById(int userId) {
+        return repository.findById(userId).orElse(null);
+    }
 
     public Optional<User> getUser(int id) {
         Optional<User> user = repository.findById(id);
