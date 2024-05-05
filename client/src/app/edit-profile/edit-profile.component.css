@@ -1,0 +1,174 @@
+@import "@fortawesome/fontawesome-free/css/all.css";
+.container {
+  margin-top: 4rem;
+}
+
+.text {
+  text-align: center;
+  font-size: 25px;
+  font-family: "OptimaLTStdRegular", sans-serif;
+  color: rgb(51, 51, 51);
+}
+.col {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 40%;
+  margin: auto;
+  align-items: center;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="date"],
+input[type="password"] {
+  width: 96%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="file"]:focus,
+textarea:focus {
+  border-color: #6c757d;
+  outline: none;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  width: 50%;
+  background-color: #d6d6d6;
+}
+.btn:hover {
+  background-color: #06bbcc;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  transform: scale(1.05);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.3s ease;
+  border-color: #06bbcc;
+}
+.btn1 {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  background-color: #343a40;
+  color: #fff;
+}
+
+.btn1:hover {
+  background-color: #292b2c;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+li {
+  display: inline-block;
+  margin-right: 10px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.error-msg {
+  color: red;
+  font-size: 12px;
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+
+.profile-container {
+  max-width: 1050px;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 30px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+  position: relative;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fa-camera {
+  position: relative;
+  top: 100px;
+  right: 60px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 4px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: rgb(28, 27, 27);
+}
+
+.upload-button i {
+  color: #06bbcc;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.profile-details {
+  flex: 1;
+}
+
+.username {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.input-file {
+  display: none;
+}

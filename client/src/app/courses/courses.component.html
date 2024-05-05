@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<div class="courses">
+  <h3>Available Courses</h3>
+  <div class="filter">
+    <i class="fa-solid fa-filter"></i>
+    <select class="selection" [(ngModel)]="filter" (change)="onFilterChange()" >
+      <option class="option" selected >All</option>
+      <option class="option">Informatique</option>
+      <option class="option">Infotronique</option>
+      <option class="option">Mécatronique</option>
+      <option class="option">Génie Industriel</option>
+    </select>
+  </div>
+  <div class="course-grid">
+    <div class="course" *ngFor="let course of courses" (click)="goToCourse(course.id, course.isJoined)" >
+      <div class="course-picture">
+        <img [src]="course.imagePath" alt=""/>
+      </div>
+      <div class="course-details">
+        <h4>{{ course.name }}</h4>
+        <p class="tutor">{{ course.creator.firstName + " " + course.creator.lastName}}</p>
+        <!-- <p class="rate">Rate: ★★★★☆</p> -->
+        <div class="mb-3">
+          <span class="rate">Rate: </span>
+          <small class="fa fa-star " *ngFor="let item of [].constructor(getNonDecimalRating(course.rating)); let i = index"></small>
+          <small class="fa fa-star" [style]="{'clip-path': 'rect(0% 0% 100% ' + (getDecimalRating(course.rating) * 100) + '%)'}"> </small>
+          <small class="rating">{{ getDecimalRating(course.rating) + getNonDecimalRating(course.rating) }}</small>
+        </div>
+        <button class="btn btn-primary" *ngIf="!course.isJoined" (click)="joinCourse(course.id)">Join Course</button>
+        <button class="btn btn-primary" *ngIf="course.isJoined" (click)="goToQuiz(course.quizz.id)">Quiz</button>
+      </div>
+    </div>
+  </div>
+</div>

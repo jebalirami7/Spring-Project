@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<div class="container" [ngClass]="{ 'active': isLoginFormActive }">
+  
+    <div class="form-container sign-up" *ngIf="!isLoginFormActive">
+      <form [formGroup]="signupForm" (ngSubmit)="signupSubmit()">
+        <h1>Create Account</h1>
+        <!-- <div class="social-icons">
+          <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+          <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+        </div> -->
+        <input required formControlName="firstName" type="text" placeholder="First Name">
+        <input required formControlName="lastName" type="text" placeholder="Last Name">
+        <input required formControlName="dob" type="date" placeholder="Date Of Birth">
+        <input required formControlName="email" type="email" placeholder="Email">
+        <input required formControlName="username" type="username" placeholder="username">
+        <input required formControlName="password" type="password" placeholder="Password">
+        <div *ngIf="signupError" class="error-msg"> {{ signupError }}</div>
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  
+    <div class="form-container sign-in" *ngIf="isLoginFormActive">
+      <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+        <h1>Sign In</h1>
+        <!-- <div class="social-icons">
+          <a href="/" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+          <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+        </div> -->
+        <input required formControlName="username" type="username" placeholder="username">
+        <input required formControlName="password" type="password" placeholder="Password">
+        <div *ngIf="loginError" class="error-msg"> {{ loginError }}</div>
+        <a href="#">Forget Your Password?</a>
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
+  
+  
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-left">
+          <h1>Welcome Back!</h1>
+          <p>Want to join us!</p>
+          <button class="hidden" (click)="toggleForm()">Sign Up</button>
+        </div>
+        <div class="toggle-panel toggle-right">
+          <h1>Welcome!</h1>
+          <p>Already have an account!</p>
+          <button class="hidden" (click)="toggleForm()">Sign In</button>
+        </div>
+      </div>
+    </div>
+  </div>

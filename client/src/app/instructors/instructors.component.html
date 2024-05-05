@@ -1,0 +1,30 @@
+<div class="container-fluid py-2">
+    <div class="container py-5">
+        <div class="section-title text-center position-relative mb-5">
+            <h6 class="d-inline-block position-relative text text-uppercase pb-2">Instructors</h6>
+            <h1 class="display-4">Meet Our Instructors</h1>
+        </div>
+        <div class="gallerywrap  ">
+            <img src="../../assets/images/arrowLeft.png" (click)="scrollLeft()" id="backbutton">
+            <div class="gallery" #instructorGalleryCont>
+                <ul class="imgs">
+                    <li class="team-item" *ngFor="let instructor of instructors">
+                        <img [src]="instructor.image" style="width: 300px; height: 400px;" alt="{{ instructor.name }}">
+                        <div class="bg-light text-center p-4">
+                            <h5 class="mb-3">{{ instructor.name }}</h5>
+                            <p class="mb-2">{{ instructor.position }}</p>
+                            <div class="social-links">
+                                <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="mx-1 p-1" href="#"><i class="fab fa-instagram"></i></a>
+                                <a class="mx-1 p-1" href="#"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <img src="../../assets/images/arrowRight.png" (click)="scrollRight()" id="nextbutton">
+        </div>
+    </div>
+</div>

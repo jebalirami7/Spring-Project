@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <a routerLink="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <h2 class="m-0 text-primary "><i class="fa fa-book me-3"></i>eLEARNING</h2>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" title="Toggle navigation">
+        <span class="navbar-toggler-icon "></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a routerLink="/" class="nav-item nav-link" routerLinkActive="active" >Home</a>
+            <a routerLink="/" class="nav-item nav-link" routerLinkActive="active">About</a>
+            <a routerLink="/courses" class="nav-item nav-link" routerLinkActive="active">Courses</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sections</a>
+                <div class="dropdown-menu fade-down m-0">
+                    <a routerLink="/" class="dropdown-item" routerLinkActive="active">Informatique</a>
+                    <a routerLink="/" class="dropdown-item" routerLinkActive="active">Infotronique</a>
+                    <a routerLink="/" class="dropdown-item" routerLinkActive="active">Mecatronique</a>
+                    <a routerLink="/" class="dropdown-item" routerLinkActive="active">Genie Industriel</a>
+                </div>
+            </div>
+            <a routerLink="/dashboard" class="nav-item nav-link" routerLinkActive="active">Contact</a>
+        </div>
+        <div *ngIf="isLoggedIn; else joinNowButton" class="notification--profile">
+            <div class="picon bell">
+              <i class="ri-notification-2-line"></i>
+            </div>
+            <div class="picon chat">
+              <i class="ri-wechat-2-line"></i>
+            </div>
+            <div class="nav-item dropdown">
+                <div class="picon profile">
+                  <img [src]="currentUser.imagePath" alt="user-img">
+                </div>
+                <div class="dropdown-menu fade-down m-0">
+                  <a routerLink="/myprofile" class="dropdown-item" routerLinkActive="active">My Profile</a>
+                  <a routerLink="/" class="dropdown-item" routerLinkActive="active">My Courses</a>
+                  <a routerLink="/login" class="dropdown-item" routerLinkActive="active" (click)="logout()">Logout</a>
+                </div>
+            </div>
+          </div>
+          <ng-template #joinNowButton>
+            <a routerLink="/login" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
+          </ng-template>
+    </div>
+</nav>

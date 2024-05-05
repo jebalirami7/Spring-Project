@@ -1,0 +1,140 @@
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+/*** Navbar ***/
+.navbar .dropdown-toggle::after {
+  font-family: "Montserrat";
+  font-weight: 900;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+.text-primary {
+  color: #06bbcc !important;
+}
+
+.navbar .navbar-nav .nav-link {
+  margin-right: 35px;
+  padding: 25px 0;
+  color: #ffffff;
+  font-size: 16px;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #06bbcc;
+}
+
+.navbar-light .navbar-brand,
+.navbar-light a.btn {
+  height: 75px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #181d38;
+  font-weight: 500;
+}
+
+.navbar-light.sticky-top {
+  top: -100px;
+  transition: 0.5s;
+}
+
+@media (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu {
+    display: block;
+    margin-top: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+    right: 0;
+  }
+
+  .navbar .dropdown-menu.fade-down {
+    top: 100%;
+    transform: rotateX(-75deg);
+    transform-origin: 0% 0%;
+  }
+
+  .navbar .nav-item:hover .dropdown-menu {
+    top: 100%;
+    transform: rotateX(0deg);
+    visibility: visible;
+    transition: 0.5s;
+    opacity: 1;
+  }
+}
+.dropdown-item {
+  background-color: #ffffff;
+  color: #181d38;
+}
+.dropdown-item:hover {
+  background-color: rgb(231, 229, 229);
+}
+.btn {
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  transition: 0.5s;
+}
+
+.btn.btn-primary,
+.btn.btn-secondary {
+  border: none;
+  border-radius: 0%;
+  color: #ffffff;
+  background-color: #06bbcc;
+}
+.notification--profile {
+  display: flex;
+  align-items: center;
+}
+
+.picon {
+  margin-right: 20px;
+  font-size: 1.1rem;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.picon.profile {
+  margin-right: 50px;
+}
+
+.lock {
+  color: #5073fb;
+  background-color: rgba(80, 115, 251, 0.2);
+}
+
+.bell {
+  color: #f1d243;
+  background-color: rgba(241, 210, 67, 0.2);
+}
+
+.chat {
+  color: #70d7a5;
+  background-color: rgba(112, 215, 165, 0.2);
+}
+
+.profile {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 10px 5px 0;
+}
