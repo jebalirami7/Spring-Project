@@ -1,88 +1,47 @@
-# Spring-Project
+# Enicar Learning
 
-Welcome to Springboot Project.
+This is a platform where instructors can manage courses, upload materials, and track progress. Students can browse, enroll, access content, and take assessments. 
+Spring Boot handles the backend. Angular builds the sleek frontend. PostgreSQL acts as the data vault.
 
-## Table of Contents
+## Demo Video
 
-1. [About](#about)
-2. [Installation](#installation)
-3. [Usage](#usage)
-4. [Git WorkFlow](#git-workflow)  
+Check out the demo video below:
 
-## About
+[![Demo Video]](https://github.com/jebalirami7/Spring-Project/assets/138411253/13594200-b23d-4202-b7f2-14c11e5ccfc8)
 
-An online tutoring platform.  
+## Key Features
 
-This project consists of a `client` directory containing Angular files and a `server` directory containing Springboot files.
+- **User Authentication and Authorization**: Secure user authentication and authorization mechanisms.
+- **User Management**: Secure login system with differentiated roles for instructors and students.
+- **Dashboard for admin**: Comprehensive dashboard for admin to manage users.
+- **Communication Tools**: Built-in messaging and email integration for direct communication.
+- **Course Management**: Create, manage, and deliver engaging courses with ease.
+- **Content Delivery**: Upload a variety of learning materials including videos, documents, and presentations.
+- **Student Enrollment**: Streamlined student enrollment process for seamless course access.
+- **Progress Tracking**: Monitor student progress through assignments, quizzes, and exams.
+- **Assessment Creation**: Build a variety of assessments to gauge student understanding.
 
-## Installation
+## Benefits
 
-Include step-by-step instructions on how to install and set up your project locally.
+- **Enhanced Learning Experience**: Foster a dynamic and interactive learning environment for both instructors and students.
+- **Improved Course Management**: Simplify course creation, delivery, and progress tracking.
+- **Increased Student Engagement**: Motivate students with a user-friendly interface and diverse learning materials.
+- **Data-Driven Insights**: Gain valuable insights into student progress and course effectiveness.
+- **Scalable and Secure**: Accommodate a growing number of users while maintaining data integrity.
 
-### Prerequisites
+## Contributing
 
-Before you begin, ensure you have the following prerequisites installed:
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
-#### For Spring Boot (Backend)
+## Authors
 
-- [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html): Java is required to run Spring Boot applications. Make sure to have JDK 11 or later installed.
-
-- [Maven](https://maven.apache.org/): Maven is used as a build automation tool for Java projects. Make sure to have Maven installed.
-
-- IDE (Integrated Development Environment) such as [Eclipse](https://www.eclipse.org/) or [IntelliJ IDEA](https://www.jetbrains.com/idea/): Optional, but recommended for development.
-
-#### For Angular (Frontend)
-
-- [Node.js](https://nodejs.org/): Node.js is required to run Angular applications. Make sure to have Node.js installed. 
-
-  You can check if Node.js is installed on your system by running the following commands in your terminal or command prompt:
-
-  ```bash
-  node --version
-
-### Installation Steps
-
-Provide instructions for setting up the project locally.
-
-1. Clone the repository.
-2. Navigate to the `client` directory.
-3. Run `npm install` to install dependencies.
-
-```bash
-git clone https://github.com/jebalirami7/Spring-Project.git
-cd Spring-Project
-cd client
-npm install
-```
-
-## Usage
-
-### Backend (Spring Boot)
-
-1. Navigate to the `server` directory.
-2. Run `mvn spring-boot:run` to start the Spring Boot server.
-
-```bash
-cd server
-mvn spring-boot:run
-```
-
-### Frontend (Angular)
-
-1. Navigate to the `client` directory.
-3. Run `ng serve` to start the Angular development server.
+- [Mohamed Rami Jebali](https://github.com/jebalirami7)
+- [Yassine Ben Abdelaziz](https://github.com/YassineBenAbdelaziz)
+- [Moemen Khchimmadi](https://github.com/blackcolver88)
+- [Ibtihel Brahem](https://github.com/ibtihelbrahem)
 
 
-```bash
-cd client
-ng serve
-```
-
-## Git Workflow
-### Workflow  
-* main branch will be used only for deployment.  
-* dev branch will be used for working/development.
-* When working on a feature create a new branch from dev.  
-* Pull changes from remote before you start working and before pushing.  
-* Pushing code require pull request.  
-* Chech the [Docs](docs/README.md) for every day git command.
+<!--
+---
+Thank you for checking out Classic Donkey Kong 2D! We hope you enjoy playing this nostalgic tribute to a classic arcade favorite. If you have any questions or feedback, feel free to reach out. Happy gaming! 🎮🍌
+-->
